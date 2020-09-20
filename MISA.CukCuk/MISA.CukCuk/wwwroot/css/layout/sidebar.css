@@ -5,15 +5,16 @@
     float: left;
     width: 200px;
     height: 100vh;
-    background-color: #808080;
+    background-color: #0973b9;
+    opacity: 0.1;
 }
 
-.menu .logo {
-    height: 50px;
-    width: 100%;
-    background-color: #ff6a00;
-    display:flex; 
-}
+    .menu .logo {
+        height: 50px;
+        width: 100%;
+        background-color: #0973b9;
+        display: flex;
+    }
 
 .menu .menu-content {
     width: 100%;
@@ -22,14 +23,14 @@
 .logo .icon-left-header {
     width: 25px;
     height: 100%;
-    padding-left: 5px;
+    margin-left: 5px;
     background-image: url('/content/image/Images/icon-left-header.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #1ad82a;
+    background-color: #0973b9;
 }
 .logo .logo-text {
-    width: 100%;
+    width: calc(100% - 25px);
     height: 100%;
     background-image: url('/content/image/Images/logo-text.png');
     background-repeat: no-repeat;
@@ -38,21 +39,20 @@
 .menu-content .menu-item {
     display: flex;
     width: 100%;
-    height:40px;
-    border-top: 1px solid #ff6a00;
-    border-bottom: 1px solid #ff6a00;
+    height: 40px;
+    border-top: 1px solid #1b8bd4;
+    border-bottom: 1px solid #08598e;
     line-height: 40px;
 }
 .menu-content .menu-item:hover{
-    background-color:#1ad82a;
+    background-color:#0094ff;
 
 }
 .menu-content .menu-item-icon {
     width: 25px;
     height: 25px;
-    background-image: url('/content/image/Images/iconMenu.png');
     background-repeat:no-repeat;
-    background-position-y:-116px;
+    /*background-position-y:-116px;*/
     align-self:center;
     margin-left:5px;
 }
@@ -60,3 +60,51 @@
     color: #ffffff;
     margin-left: 10px;
 }
+.icon1 {
+    background-image: url('/content/image/Images/iconMenu.png');
+}
+.icon2 {    
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-193px;
+}
+.icon3 {
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-373px;
+}
+.icon4 {
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-39px;
+}
+.icon5 {   
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-77px;
+}
+.icon6 {
+    background-image: url('/content/image/Images/icon-deposit.png');
+}
+.icon7 {
+    background-image: url('/content/image/Images/icon-cost.png');
+}
+.icon8 {
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-116px;
+}
+.icon9 {
+    background-image: url('/content/image/Images/vector-smart-object.png');
+}
+.icon10 {
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-153px;
+}
+.icon11 {
+    background-image: url('/content/image/Images/iconMenu.png');
+    background-position-y:-232px;
+}
+.icon12 {
+    background-image: url('/content/image/Images/iconHelp.png');
+}
+.icon13 {
+    background-image: url('/content/image/Images/icon-subscriber.png');
+}
+
+
