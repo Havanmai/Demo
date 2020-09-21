@@ -21,7 +21,7 @@
     background-color: #ffffff;
     height: 100vh;
     margin-left: 200px;
-    opacity: 0.1;
+    opacity: 0.4;
 }
     .content .header {
         
@@ -47,13 +47,14 @@
     font-size: 20px;
 }
 .title .title-right {
-    
     height: 50px;
+    width: 380px;
     margin: 5px 0px 5px 0px;
 }
 .title-right button {
-    height: 30px;
-    width: 190px;
+    
+    display:flex;
+    width: 180px;
 }
 .bicon {
     height: 16px;
@@ -137,27 +138,23 @@
 
 /*table*/
 .grid-content .content2 {
-    border: 1px solid #ccc;
+    border: 1px solid black ;
     height: calc(100% - 60px);
     overflow: auto;
 }
-table{
-    width:10000px;
+.content2 th, td {
+    border: 1px solid black !important;
+    width: 500px !important;
 }
-.content2  th, td {
-    border: 1px solid #868585;
-    width:500px;
+.content2 table {
+    border-collapse: collapse;
+    width: 10000px !important;
 }
-.content2 table{
-    border-collapse:collapse;
-
-}
-table tr:nth-child(odd){
-    background-color:#eee;
-
-}
-table tr:nth-child(even){
-    background-color:#ffffff;
+    .content2 table tr:nth-child(odd) {
+        background-color: #808080 !important;
+    }
+content2 table tr:nth-child(even) {
+    background-color: #ffffff !important;
 }
 
 /*phân trang*/
@@ -187,10 +184,15 @@ table tr:nth-child(even){
         margin-left: 5px !important;
         margin-right: 5px !important;
     }
-    .content3-left button {
-        margin-left: 5px !important;
-        margin-right: 5px !important;
-    }
+
+
+.content3-left button {
+    display: flex;
+    height: 100%;
+    border: none;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
     .page-icon {
         height: 25px;
         width: 30px;
@@ -222,29 +224,26 @@ select{
     padding-top:5px;
     width: 180px;
 }
-/*Modal*/
+
+
 .modal-content {
     position: fixed;
-    
     left:400px;
     top:100px;
-    height: 500px;
+    height: 400px;
     width: 700px;
     border: 5px solid #0973b9;
     border-radius: 5px 5px 5px 5px;
     margin: 0;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color:#ffffff;
 }
 .modal-header {
-    /*position: absolute;*/
+    position: absolute;
     margin: 0;
-    /*padding-left:10px;
-    padding-right:20px;*/
-    /*margin-top:10px;*/
     height: 50px;
     width: 100%;
     background-color: #0973b9;
-    padding-right:1px;
     display:flex;
     justify-content:space-between;
 }
@@ -252,23 +251,22 @@ select{
     margin-right:10px;
     margin-top:10px;
 }
-.modal-body table{
-    
-    height:calc(500px - 100px);
-    width:100%;
+.modal-body  {
+    margin-top:50px;
+    height: calc(400px - 100px);
+    width: 100%;
+    border:unset !important;
 }
-.modal-body table, td {
-    background-color: #ffffff;
-    border: none;
-    
+#modal td {
+    background-color: #ffffff !important;
+    border: unset !important;
+    width: 150px !important;
 }
-.modal-body td {
-    width: 150px;
+
+#modal .note {
+    color: rgb(255, 0, 0) !important;
 }
-.modal-body .note{
-    color:rgb(255, 0, 0)!important;
-}
-.modal-body .input-create1 {
+#modal .input-create1 {
     width: 95%;
 }
 .modal-footer {
@@ -276,40 +274,41 @@ select{
     width: 100%;
     display:flex;
     background-color:#ffffff;
-    
+    justify-content:space-between;
 }
 .footer-left{
     display:flex;
     margin-left: 20px;
 }
-.footer-left button{
-    float:left;
-    height:100%;
-    
-}
 .footer-right {
-    
-    margin-left: 150px;
+    display: flex;
+    margin-right:20px;
 }
-.modal-footer .icon31 {
-    width: 16px !important;
-    height: 16px !important;
-    background-position:center;
-    background-repeat:no-repeat;
+    .footer-right button {
+        display: flex;
+        margin-right: 20px;
+    }
+.modal-footer .footer-left button{
+    display:flex;
+    justify-content:space-between;
 }
+
 .bicon9 {
-    background-image: url("../../content/image/Images/IconSprite.png");
-    background-position-y: -1551px !important;
+    background-image: url("../../content/image/Images/iconHelp.png");
+    padding-right:10px;
 }
 .bicon10 {
     background-image: url("../../content/image/Images/IconSprite.png");
-    background-position-y: -1551px;
+    background-position-y: -767px !important;
+    padding-right: 10px;
 }
 .bicon11 {
     background-image: url("../../content/image/Images/IconSprite.png");
-    background-position-y: -1551px;
+    background-position-y: -737px !important;
+    padding-right: 10px;
 }
 .bicon12 {
     background-image: url("../../content/image/Images/IconSprite.png");
-    background-position-y: -1551px;
+    background-position-y: -1953px !important;
+    padding-right: 10px;
 }
