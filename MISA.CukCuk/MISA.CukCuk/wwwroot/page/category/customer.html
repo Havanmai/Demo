@@ -20,7 +20,7 @@
             <div class="menu-item">
                 <div class="menu-item-icon icon1"></div>
                 <div class="menu-item-text">Tổng quan</div>
-                
+
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon icon2"></div>
@@ -76,15 +76,19 @@
     <div class="content">
         <div class="header">
             <div class="header-left">
-                <select>
-                    <option> Nhà hàng mai trang</option>
-                    <option> Nhà hàng mai trang</option>
-                    <option> Nhà hàng mai trang</option>
-                    <option> Nhà hàng mai trang</option>
+                <select class="header-choose">
+                    <option class="header-choose-item"> Nhà hàng mai trang</option>
+                    <option class="header-choose-item"> Nhà hàng mai trang</option>
+                    <option class="header-choose-item"> Nhà hàng mai trang</option>
+                    <option class="header-choose-item"> Nhà hàng mai trang</option>
                 </select>
             </div>
 
-            <div class="header-right">jshfdjgoerjo</div>
+            <div class="header-right">
+                <span class="icon Eath-icon"></span>
+                <span >Ha Van Mai </span>
+                <span class="icon drop-down-icon"></span>
+            </div>
         </div>
         <div class="main-content">
             <div class="title">
@@ -211,8 +215,8 @@
 
         </div>
     </div>
-     <!--Modal content--> 
-    
+    <!--Modal content-->
+
     <div class="modal-content">
         <div class="modal-header">
             <p>Khách hàng</p>
@@ -230,11 +234,20 @@
                     <td class="lbl">Mã thành viên</td>
                     <td><input type="text" class="input-create" /></td>
                     <td class="lbl">Hạng thẻ</td>
-                    <td><input type="text" class="input-create" /></td>
+
+                    <td><select>
+                <option>loai 1</option>
+                 <option>loai 2</option>
+                        </select></td>
                 </tr>
                 <tr>
                     <td class="lbl">Nhóm khách hàng</td>
-                    <td><input type="text" class="input-create" /></td>
+                    <td>
+                        <select>
+                            <option>nhom 1</option>
+                            <option>nhom 2</option>
+                        </select>
+                    </td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -246,30 +259,30 @@
                 </tr>
                 <tr>
                     <td class="lbl">Ngày sinh</td>
-                    <td><input type="text" class="input-create"  src="../../content/image/Images/"/></td>
+                    <td><input type="date" class="input-create1" /></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="lbl">Tên Công ty</td>
                     <td colspan="3"><input type="text" class="input-create1" /></td>
-                    
+
                 </tr>
                 <tr>
                     <td class="lbl">Mã số thuế</td>
                     <td><input type="text" class="input-create" /></td>
-                    <td></td>
-                    <td></td>
+                    <td class="lbl">Email</td>
+                    <td><input type="text" class="input-create" /></td>
                 </tr>
                 <tr>
                     <td class="lbl">Địa chỉ</td>
                     <td colspan="3"><input type="text" class="input-create1" /></td>
-                   
+
                 </tr>
                 <tr>
                     <td class="lbl">Ghi chú</td>
-                    <td colspan="3"><input type="text" class="input-create1" /></td>
-                    
+                    <td colspan="3"><textarea  class="input-create2" ></textarea></td>
+
             </table>
         </div>
         <div class="modal-footer">
@@ -283,5 +296,7 @@
             </div>
         </div>
     </div>
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <script src="../../js/customer.js"></script>
 </body>
 </html>
