@@ -21,13 +21,25 @@
     background-color: #ffffff;
     height: 100vh;
     margin-left: 200px;
-    opacity: 0.4;
+    /*opacity: 0.4;*/
 }
     .content .header {
         
         height: 50px;
         background-color: #0973b9;
+        display:flex;
+        justify-content:space-between;
     }
+.header .header-left{
+     padding-left:10px;
+     
+     padding-top:10px;
+}
+.header-left select{
+     height:30px;
+     width:200px;
+     background-color:rgb(0, 148, 255);
+}
     .content .main-content {
         
         padding: 10px;
@@ -47,14 +59,17 @@
     font-size: 20px;
 }
 .title .title-right {
+    display:flex;
     height: 50px;
     width: 380px;
     margin: 5px 0px 5px 0px;
 }
 .title-right button {
-    
-    display:flex;
-    width: 180px;
+    display: flex;
+    margin-right: 20px;
+    height: 30px;
+    justify-content: space-between;
+    padding-top: 5px;
 }
 .bicon {
     height: 16px;
@@ -134,39 +149,47 @@
 }
 .content1 button span{
     padding-right:10px;
+    
 }
 
 /*table*/
 .grid-content .content2 {
-    border: 1px solid black ;
+    border: 1px solid #ccc;
     height: calc(100% - 60px);
     overflow: auto;
 }
-.content2 th, td {
-    border: 1px solid black !important;
+
+.content2 table,th,td {
+    border: 1px solid #808080 !important;
     width: 500px !important;
+   padding-left:10px;
 }
 .content2 table {
     border-collapse: collapse;
-    width: 10000px !important;
+    width: 5000px !important;
 }
-    .content2 table tr:nth-child(odd) {
-        background-color: #808080 !important;
+table{
+    border-collapse:collapse;
+}
+table tr:nth-child(odd){
+    background-color:#eee;
+}
+    table tr:nth-child(even) {
+        background-color: #ccc;
     }
-content2 table tr:nth-child(even) {
-    background-color: #ffffff !important;
-}
-
-/*phân trang*/
-.grid-content .content3 {
-    height: 28px;
-    background-color: #f4f3f3;
-    display: flex;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: calc(100% - 20px);
-    justify-content: space-between;
-}
+    table th {
+        background-color: #ccc;
+    }
+    /*phân trang*/
+    .grid-content .content3 {
+        height: 28px;
+        background-color: #f4f3f3;
+        display: flex;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: calc(100% - 20px);
+        justify-content: space-between;
+    }
 .content3-left {
     padding:2px;
     display: flex;
