@@ -1,4 +1,23 @@
 ﻿body {
+    font-family: Tahoma_Regular;
+    margin: 0;
+    font-size: 16px;
+    /*font-weight:bold;*/
+}
+
+@font-face {
+    font-family: 'fontello';
+    src: url('../../content/fonts/fontello.woff');
+}
+
+@font-face {
+    font-family: 'Tahoma_Bold';
+    src: url('../../content/fonts/Tahoma_Bold.woff');
+}
+
+@font-face {
+    font-family: 'Tahoma_Regular';
+    src: url('../../content/fonts/Tahoma_Regular.woff');
 }
 
 .menu {
@@ -6,7 +25,7 @@
     width: 200px;
     height: 100vh;
     background-color: #0973b9;
-    opacity: 0.4;
+   /* opacity: 0.4;*/
 }
 
     .menu .logo {
