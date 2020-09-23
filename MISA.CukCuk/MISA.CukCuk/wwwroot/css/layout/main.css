@@ -202,8 +202,8 @@
 .content2 td {
     width: 200px;
 }
-.content2 tbody,tr:hover {
-    background-color:antiquewhite;
+.content2 tr:hover {
+    background-color:#96e6e6;
 }
 .content2 table {
     border-collapse: collapse;
@@ -297,8 +297,16 @@ table tr:nth-child(odd){
 }
 
 
+.modal {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #808080;
+    position: absolute;
+    opacity: 0.6;
+}
 .modal-content {
-    position: fixed;
+    display:none;
     left:400px;
     top:100px;
     height: 380px;
@@ -307,6 +315,7 @@ table tr:nth-child(odd){
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     background-color:#ffffff;
+    position:absolute;
 }
 .modal-header {
     position: absolute;
@@ -421,3 +430,4 @@ table tr:nth-child(odd){
     padding-right: 15px;
     margin-top: 2px;
 }
+
