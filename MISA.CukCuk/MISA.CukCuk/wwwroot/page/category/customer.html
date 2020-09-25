@@ -101,7 +101,7 @@
                 <div class="title">
                     <span class="title-left"><label>Danh Mục</label><span class="icon icontitle"></span><label id="label-title">  Nhân Viên</label></span>
                     <span class="title-right">
-                        <button>Quay lại thiết lập ban đầu </button>
+                        <button id="btnreturn">Quay lại thiết lập ban đầu </button>
                         <button><span class="icon bicon"></span> Phản hồi</button>
                     </span>
 
@@ -109,10 +109,10 @@
                 <div class="grid-content">
                     <div class="content1">
 
-                        <button id="btnthem"><span class="icon bicon1"></span>Thêm</button>
-                        <button><span class="icon bicon2"></span>Nhân bản</button>
-                        <button><span class="icon bicon3"></span>Sửa</button>
-                        <button><span class="icon bicon4"></span>Xóa</button>
+                        <button id="btnAdd"><span class="icon bicon1"></span>Thêm</button>
+                        <button id="btnMutil"><span class="icon bicon2"></span>Nhân bản</button>
+                        <button id="btnChange"><span class="icon bicon3"></span>Sửa</button>
+                        <button id="btnDelete"><span class="icon bicon4"></span>Xóa</button>
                         <button><span class="icon bicon5"></span>Nạp</button>
                         <button><span class="icon bicon6"></span>Nhập khẩu</button>
                         <button><span class="icon bicon7"></span>Xuất khẩu</button>
@@ -129,10 +129,12 @@
                                     <th>Địa chỉ</th>
                                     <th>Email</th>
                                     <th>SDT</th>
+                                    <th>Số tiền nợ</th>
+                                    <th>Ngày Mua</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <!--<tr>
                                     <td>MKH0123654789 </td>
                                     <td>Nguyễn Minh Trang</td>
                                     <td>Công ty cổ phần MISA</td>
@@ -186,7 +188,7 @@
                                     <td>Hà Nội</td>
                                     <td>misa@gmail.com</td>
                                     <td>0397564823</td>
-                                </tr>
+                                </tr>-->
 
                             </tbody>
                         </table>
@@ -236,13 +238,13 @@
                 <table id="modal">
                     <tr>
                         <td class="lbl">Mã Khách hàng<span class="note">(*)</span></td>
-                        <td><input type="text" class="input-create0 input-create" /></td>
+                        <td><input type="text" class="input-create0 input-create"  id="txtCustomerCode"/></td>
                         <td class="lbl">Tên Khách hàng<span class="note">(*)</span></td>
-                        <td><input type="text" class="input-create0 input-create" /></td>
+                        <td><input type="text" class="input-create0 input-create"  id="txtCustomerName"/></td>
                     </tr>
                     <tr>
                         <td class="lbl">Mã thành viên</td>
-                        <td><input type="text" class="input-create0 input-create" /></td>
+                        <td><input type="text" class="input-create0 input-create"  id="txtCustomerName"/></td>
                         <td class="lbl">Hạng thẻ</td>
 
                         <td>
@@ -265,46 +267,46 @@
                     </tr>
                     <tr>
                         <td class="lbl">Số điện thoại</td>
-                        <td><input type="text" class="input-create0 input-create" /></td>
+                        <td><input type="text" class="input-create0 input-create"  id="txtMobile"/></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td class="lbl">Ngày sinh</td>
-                        <td><input type="date" class="input-create0 input-create1" /></td>
+                        <td><input type="date" class="input-create0 input-create1"  id="txtDateBorn" /></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td class="lbl">Tên Công ty</td>
-                        <td colspan="3"><input type="text" class="input-create0 input-create2" /></td>
+                        <td colspan="3"><input type="text" class="input-create0 input-create2"  id="txtCustomerCompany"/></td>
 
                     </tr>
                     <tr>
                         <td class="lbl">Mã số thuế</td>
-                        <td><input type="text" class="input-create0 input-create" /></td>
+                        <td><input type="text" class="input-create0 input-create"  id="Code" /></td>
                         <td class="lbl">Email</td>
                         <td><input type="text" class="input-create0 input-create" /></td>
                     </tr>
                     <tr>
                         <td class="lbl">Địa chỉ</td>
-                        <td colspan="3"><input type="text" class="input-create0 input-create2" /></td>
+                        <td colspan="3"><input type="text" class="input-create0 input-create2"  id="txtCustomerAddress"/></td>
 
                     </tr>
                     <tr>
                         <td class="lbl">Ghi chú</td>
-                        <td colspan="3"><textarea class="input-create0 input-create3"></textarea></td>
+                        <td colspan="3"><textarea class="input-create0 input-create3"  id="txtNote"></textarea></td>
 
                 </table>
             </div>
             <div class="modal-footer">
                 <div class="footer-left">
-                    <button><i class="icon bicon9"></i>Giúp</button>
+                    <button><i class="icon bicon9" id="btnHelp"></i>Giúp</button>
                 </div>
                 <div class="footer-right">
-                    <button><span class="icon bicon10"></span>Cất</button>
-                    <button><span class="icon bicon11"></span>Cất & Thêm</button>
-                    <button><span class="icon bicon12"></span>Hủy bỏ</button>
+                    <button id="btnSave"><span class="icon bicon10" ></span>Cất</button>
+                    <button id="btnSaveAdd"><span class="icon bicon11" ></span>Cất & Thêm</button>
+                    <button id="btnCancel"><span class="icon bicon12" ></span>Hủy bỏ</button>
                 </div>
             </div>
         </div>
