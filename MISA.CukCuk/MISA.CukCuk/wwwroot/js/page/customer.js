@@ -14,6 +14,7 @@ class Customer extends Base  {
     getData() {
         this.Data = data;
     }
+   
     //inintEvent() {
 
     //    $('#btnAdd').click(this.btnAddOnClick.bind(this));
@@ -125,6 +126,9 @@ class Customer extends Base  {
 //    })
    
 //}
+        /**dữ liệu ảo
+        * author: HVM 29/09/2020
+        * edit: dữ liệu ảo  với 3 bản ghis*/
 var data = [
     {
         CustomerCode: "KH001",

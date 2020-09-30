@@ -508,4 +508,9 @@
         padding-right: 15px;
         margin-top: 2px;
     }
-
+.required-error  {
+    border: 1px solid #d41010 !important;
+}
+.required-error:focus {
+    border: 1px solid #d41010 !important;
+}

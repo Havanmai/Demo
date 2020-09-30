@@ -14,6 +14,10 @@ class Base {
         this.inintEvent();
 
     }
+    /**
+    * các sự kiện
+    * Author: HVM 29/09/2020
+    * Edit : chức các sự kiện nút*/
     inintEvent() {
 
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
@@ -21,12 +25,22 @@ class Base {
         $('.close').click(this.btnCloseOnClick.bind(this));
         $('#btnSave').click(this.btnSaveOnClick.bind(this));
         $('#table').on('click', 'tr', this.rowonclick);
-        $('btnReload').click(this.btnReloadOnClick.bind(this));
+        $('#btnReload').click(this.btnReloadOnClick.bind(this));
+        $('input[required]').blur(this.checkRequired);
     }
-    // lấy data cho các lớp con kế thừa
+
+   
+    /**
+    *   kế thừa
+    * Author: HVM 29/09/2020
+    * Edit : lấy data cho các lớp con  kế thừa*/
     getData(){
         this.Data = null;
     }
+    /**
+     * Load dữ liệu 
+     * Author: HVM 29/09/2020
+     * Edit : load dữ liệu lên bảng*/
 
     loadData() {
         try {
@@ -46,7 +60,20 @@ class Base {
 
                     var fieldName = $(field).attr('fieldName');
                     var value = obj[fieldName];
-                    var td = $(`<td>` + value + `</td>`);
+                    if (fieldName == "Datetime" || fieldName == "DateOfBirth") {
+                        var td = $(`<td align="center">` + CommonJs.formatDate(value) + `</td>`);
+                    } else if (fieldName == "Salary" || fieldName == "DebitMoney") {
+                        var td = $(`<td align="right">` + CommonJs.fomartMoney(value)+ `</td>`);
+                    } else if (fieldName == "Mobile" || fieldName == "Code" ) {
+                        var td = $(`<td align="center">` + value + `</td>`);
+                    }
+                    else if (fieldName == "CustomerEmail") {
+                        var td = $(`<td  title="` + value + `">` + CommonJs.title(value) + `</td>`);
+                    }
+                    else {
+                        var td = $(`<td>` + value + `</td>`);
+                    }
+                   
                     $(tr).append(td);
                 })
                 $('#table tbody').append(tr);
@@ -57,12 +84,14 @@ class Base {
         }
 
     }
+    //#region 'Nut sự kiện'
 
     /**Hien thi modal
      Author: HVM:
      Edit: Hien modal*/
     btnAddOnClick() {
         this.showDetailModal();
+        $(this).focus;
     }
     /**tat modal
     Author: HVM:
@@ -79,7 +108,7 @@ class Base {
     }
     /**hiển  modal
     Author: HVM:
-    Edit: Tat modal*/
+    Edit:  bật modal*/
     showDetailModal() {
         $('.modal').show();
         $('.modal-content').show();
@@ -93,8 +122,47 @@ class Base {
     Edit: Tat modal*/
     btnSaveOnClick() {
         //validate thong tin nhap
-        // thu thap thong tin tren form
-        // thuc hien cat du lieu
+        var inputRequieres = $('[required]');
+        var IsValid = true;
+        $.each(inputRequieres, function (index, input) {
+            debugger;
+            var valid = $(input).trigger("blur");
+            if (IsValid && valid.hasClass('required-error')) {
+                IsValid = false;
+            }
+        })
+        if (!this.checkRequired(inputRequieres)) {
+            return;
+        }
+        
+        //// thu thap thong tin tren form
+        //if (IsValid) {
+        //    var databases = {};
+        //    $(databases, function (index, database) {
+        //        database = this.value;
+        //    })
+
+        //}
+        //// thuc hien cat du lieu
+
+    }
+    /**
+     * kiem tra du lieu rong
+     * author: HVM 30/09/2020
+     * Edit: kie tra trong du lieu khi nhap vao dialog modal*/
+    checkRequired() {
+        var value = this.value;
+        if (!value) {
+            $(this).addClass('required-error');
+            $(this).attr("title", "Ban phai nhap thong tin");
+            return;
+
+        }
+        else {
+            $(this).removeClass('required-error');
+            $(this).removeAttr("title", "Ban phai nhap thong tin");
+            
+        }
 
     }
 
@@ -109,7 +177,11 @@ class Base {
         this.loadData();
 
     }
+    //#endregion 'Nut sự kiện'
 }
+    /**dữ liệu ảo
+     * author: HVM 29/09/2020
+     * edit: dữ liệu ảo  với 100 bản ghis*/
 var data = [];
 for (var i = 0; i < 100; i++) {
     var employee = {
@@ -128,41 +200,3 @@ for (var i = 0; i < 100; i++) {
 
 }
 
-//var data = [
-//    {
-//        EmployeeCode: "KH001",
-//        EmployeeName: "Linh Trang Nguyen",
-//        Gender: "Nữ",
-//        DateOfBirth: "29/08/1998",
-//        Mobile: "0123654789",
-//        PositionName: "Giám đốc",
-//        DepartmentsName: "Phòng đào tạo",
-//        Email: "Ninh Binh",
-//        Salary: "10000000",
-//        WorkStatus: "Đang làm việc",
-//    },
-//    {
-//        EmployeeCode: "KH001",
-//        EmployeeName: "Linh Trang Nguyen",
-//        Gender: "Nữ",
-//        DateOfBirth: "29/08/1998",
-//        Mobile: "0123654789",
-//        PositionName: "Giám đốc",
-//        DepartmentsName: "Phòng đào tạo",
-//        Email: "Ninh Binh",
-//        Salary: "10000000",
-//        WorkStatus: "Đang làm việc",
-//    },
-//    {
-//        EmployeeCode: "KH001",
-//        EmployeeName: "Linh Trang Nguyen",
-//        Gender: "Nữ",
-//        DateOfBirth: "29/08/1998",
-//        Mobile: "0123654789",
-//        PositionName: "Giám đốc",
-//        DepartmentsName: "Phòng đào tạo",
-//        Email: "Ninh Binh",
-//        Salary: "10000000",
-//        WorkStatus: "Đang làm việc",
-//    }
-//]
