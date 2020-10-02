@@ -1,8 +1,7 @@
 ﻿$(document).ready(function () {
 
 
-    var base  = new Base();
-    //customer.loadData();
+   
 
 
 })
@@ -45,8 +44,8 @@ class Base {
     loadData() {
         try {
             
-                // đọc thông tin các cột dữ liệu
-                var fields = $("#table thead th");
+            // đọc thông tin các cột dữ liệu
+           var fields = $("#table thead th");
                 
             //lấy dữ liệu
             var data = this.Data;
@@ -75,6 +74,7 @@ class Base {
                     }
                    
                     $(tr).append(td);
+                    debugger;
                 })
                 $('#table tbody').append(tr);
             })
@@ -124,27 +124,60 @@ class Base {
         //validate thong tin nhap
         var inputRequieres = $('[required]');
         var IsValid = true;
+
+        //var self = this;
+        var self = this;
         $.each(inputRequieres, function (index, input) {
-            debugger;
+            
             var valid = $(input).trigger("blur");
             if (IsValid && valid.hasClass('required-error')) {
                 IsValid = false;
             }
+            else {
+                IsValid = true;
+            }
         })
-        if (!this.checkRequired(inputRequieres)) {
-            return;
-        }
         
-        //// thu thap thong tin tren form
-        //if (IsValid) {
-        //    var databases = {};
-        //    $(databases, function (index, database) {
-        //        database = this.value;
-        //    })
-
+       
+        //if (!this.checkRequired(inputRequieres)) {
+        //    return ;
         //}
-        //// thuc hien cat du lieu
+        // thu thap thong tin tren form
+        if (IsValid) {
+            var inputs = $('#modal tr td input[fieldName]');
+            var object = {};
+            
+            $(inputs, function (index, input) {
 
+                var fieldName = $(input).attr('fieldName');
+                var value = $(input).val();
+                console.log(value);
+                debugger;
+                object[fieldName] = value;
+                
+            })
+            //var customer = {
+            //    CustomerCode: $('#txtCustomerCode').val(),
+            //    CustomerName: $('#txtCustomerName').val(),
+            //    CustomerCompany: $('#txtCustomerCompany').val(),
+            //    Code: $('#txtCode').val(),
+            //    CustomerAddress: $('#txtCustomerAddress').val(),
+            //    CustomerEmail: $('#txtCustomerEmail').val(),
+            //    Mobile: $('#txtMobile').val(),
+            //    DebitMoney: $('#txtDebitMoney').val(),
+            //    Datetime: $('#txtDatetime').val()
+            //}
+            // gọi service thực hiện lưu dữ liệu
+            //inputs.push(object);
+            data.push(object);
+            debugger;
+            self.loadData();
+            self.btnCloseOnClick();
+
+        }
+        // thuc hien cat du lieu
+        
+        
     }
     /**
      * kiem tra du lieu rong
@@ -152,7 +185,7 @@ class Base {
      * Edit: kie tra trong du lieu khi nhap vao dialog modal*/
     checkRequired() {
         var value = this.value;
-        if (!value) {
+        if (!value || value == 0 || value == "" || !(value && value.trim())) {
             $(this).addClass('required-error');
             $(this).attr("title", "Ban phai nhap thong tin");
             return;
@@ -175,6 +208,9 @@ class Base {
      * edit: load du lieu nut nap*/
     btnReloadOnClick() {
         this.loadData();
+
+    }
+    validata() {
 
     }
     //#endregion 'Nut sự kiện'

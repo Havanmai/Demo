@@ -15,6 +15,16 @@ class Customer extends Base  {
         this.Data = data;
     }
    
+    //btnSaveOnClick() {
+    //    super.btnSaveOnClick();
+    //    customer=object;
+
+
+    //}
+   
+
+   
+   
     //inintEvent() {
 
     //    $('#btnAdd').click(this.btnAddOnClick.bind(this));
