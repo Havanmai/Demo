@@ -149,7 +149,7 @@ var data = [
         CustomerEmail: "linh@gmail.com",
         Mobile: "0123654789",
         DebitMoney: "10000000",
-        Datetime:"22/08/2020"
+        Datetime: "09-01-2020"
     },
     {
         CustomerCode: "KH002",
@@ -160,7 +160,7 @@ var data = [
         CustomerEmail: "trang@gmail.com",
         Mobile: "0123654789",
         DebitMoney: "10000039",
-        Datetime: "22/08/2020"
+        Datetime: "09-01-2020"
     },
     {
         CustomerCode: "KH003",
@@ -171,6 +171,6 @@ var data = [
         CustomerEmail: "linhnguyen@gmail.com",
         Mobile: "0123654789",
         DebitMoney: "100186200",
-        Datetime: "22/08/2020"
+        Datetime: "09-01-2020"
     }
 ]

@@ -43,7 +43,8 @@ class Base {
 
     loadData() {
         try {
-            
+            // xoas trong bang truoc khi load du lieu
+            $("#table tbody").empty();
             // đọc thông tin các cột dữ liệu
            var fields = $("#table thead th");
                 
@@ -56,7 +57,7 @@ class Base {
                 var tr = $(`<tr></tr>`);
                 $.each(fields, function (index, field) {
                     // binding du liệu
-
+                    //TODO: them 1 truong chung voi ca thuoc tinh chung cua cac doi tuong de rut gon va tranh code xau
                     var fieldName = $(field).attr('fieldName');
                     var value = obj[fieldName];
                     if (fieldName == "Datetime" || fieldName == "DateOfBirth") {
@@ -79,7 +80,7 @@ class Base {
                 $('#table tbody').append(tr);
             })
         }
-        catch{
+        catch(e){
 
         }
 
@@ -124,36 +125,46 @@ class Base {
         //validate thong tin nhap
         var inputRequieres = $('[required]');
         var IsValid = true;
-
+        //var Isemail=true
         //var self = this;
         var self = this;
         $.each(inputRequieres, function (index, input) {
             
             var valid = $(input).trigger("blur");
-            if (IsValid && valid.hasClass('required-error')) {
-                IsValid = false;
-            }
-            else {
-                IsValid = true;
+            if  ($(input).attr('typeof') == 'email') {
+                $(input).value = CommonJs.isInvalidEmail('#txtCustomerEmail');
+                if ($(input).value = false && IsValid && valid.hasClass('required-error')) {
+                    //}
+                    //if (IsValid && valid.hasClass('required-error') ) {
+                    IsValid = false;
+                }
+                else {
+                    IsValid = true;
+                }
             }
         })
         
        
         //if (!this.checkRequired(inputRequieres)) {
-        //    return ;
+        //    debugger
+        //    return IsValid = true ;
         //}
         // thu thap thong tin tren form
         if (IsValid) {
             var inputs = $('#modal tr td input[fieldName]');
             var object = {};
-            
-            $(inputs, function (index, input) {
+
+            $.each(inputs, function (index, input) {
 
                 var fieldName = $(input).attr('fieldName');
                 var value = $(input).val();
-                console.log(value);
+                //console.log(value);
                 debugger;
                 object[fieldName] = value;
+               
+
+                //$(tr).append(td);
+                
                 
             })
             //var customer = {
@@ -168,9 +179,10 @@ class Base {
             //    Datetime: $('#txtDatetime').val()
             //}
             // gọi service thực hiện lưu dữ liệu
-            //inputs.push(object);
+            // cat du lieu
             data.push(object);
             debugger;
+            // load lai du lieu dong thoi tat dialog modal
             self.loadData();
             self.btnCloseOnClick();
 
@@ -186,6 +198,7 @@ class Base {
     checkRequired() {
         var value = this.value;
         if (!value || value == 0 || value == "" || !(value && value.trim())) {
+
             $(this).addClass('required-error');
             $(this).attr("title", "Ban phai nhap thong tin");
             return;

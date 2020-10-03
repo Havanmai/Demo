@@ -2,17 +2,35 @@
  * Author : HVM
  * Edit: định dạng cho thành phần tiền
  * */var CommonJs = {
+     /**
+      * Ham dinh dang tien te
+      * 
+      * @param {string} _money
+      *  Author: HVM 298/09/2020
+      */
     fomartMoney(money) {
         return money.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    },
+         },
+     /**
+      * Ham format ngay
+      * @param {date} _date
+ 
+      *  Author: HVM 29/09/2020
+      */
     formatDate(date) {
-        var parts = date.split('/');
+        var parts = date.split('-');
         // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
         // January - 0, February - 1, etc.
         var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
         return mydate.toLocaleDateString()
-    },
+     },
+    
+    /**
+     * ham check email
+     * @param {string} the_email
+     * Author: HVM 29/09/2020
+     */
     isInvalidEmail(the_email) {
         var at = the_email.indexOf("@");
         var dot = the_email.lastIndexOf(".");
@@ -25,17 +43,23 @@
             &&
             (space == -1)) //không có khoẳng trắng 
         {
-            alert("Email valid");
+            
             return true;
         } else {
-            alert("Email Invalid");
+           
             return false;
         }
 
-    },
+     },
+    /**
+     * Ham tao title
+     * @param {string} column
+     *  Author: HVM 29/09/2020
+     */
      title(column) {
          return column.slice(0, 5) + `...`;
-     }
+     },
+     
 }
 Number.prototype.formatMoney = function () {
     return this.ToString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
