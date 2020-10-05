@@ -1,9 +1,9 @@
-﻿body {
+﻿/*body {
     font-family: Tahoma_Regular;
     margin: 0;
-    font-size: 16px;
+    font-size: 13px;*/
     /*font-weight:bold;*/
-}
+/*}
 
 @font-face {
     font-family: 'fontello';
@@ -18,7 +18,7 @@
 @font-face {
     font-family: 'Tahoma_Regular';
     src: url('../../content/fonts/Tahoma_Regular.woff');
-}
+}*/
 
 .menu {
     float: left;

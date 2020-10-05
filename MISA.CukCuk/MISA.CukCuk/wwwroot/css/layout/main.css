@@ -1,7 +1,7 @@
 ﻿body {
     font-family: Tahoma_Regular;
     margin: 0;
-    font-size: 16px;
+    font-size: 13px;
     /*font-weight:bold;*/
 }
 @font-face {
@@ -29,13 +29,13 @@
             display: flex;
             justify-content: space-between;
             font-family: Tahoma_Regular !important;
-            font-size: 16px !important;
+            font-size: 13px !important;
         }
     .header .header-left {
         padding-left: 10px;
         padding-top: 10px;
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
         border:none;
     }
         .header .header-left .header-choose:focus {
@@ -46,7 +46,7 @@
         width: 200px;
         background-color: rgb(0, 148, 255);
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
         color: #ffffff;
     }
     .header-right {
@@ -54,11 +54,12 @@
         height: 30px;
         margin-top:5px;
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
     }
     .header-right .language {
         width: 200px;
         background-color: rgb(0, 148, 255);
+        color:#ffffff;
         
     }
         .header-right .language:focus {
@@ -125,14 +126,14 @@
         /*margin: 5px 0px 5px 0px;*/
     }
     .title-right button {
-        display: flex;
+        /*display: flex;*/
     
         /*margin-right: 30px;*/
        /* height: 30px;*/
         /*justify-content: space-between;*/
         /*padding-top: 5px;*/
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
     }
     #btnreturn{
         margin-right:15px;
@@ -170,7 +171,7 @@
         padding-bottom: 5px;
         border: 1px solid rgba(0,0,0,00);
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
     }
         .content1 button:hover {
             background-color: #ffffff;
@@ -234,21 +235,21 @@
     .content2 table, th, td {
         border: 1px solid #ccc !important;
         padding-left: 10px;
+
     
     }
     .content2 table {
-        width: 100%;
+       /* width: 100%;*/
         border-collapse: collapse;
     }
-    .content2 td {
-        width: 200px;
-        padding-left: 2px;
-    }
-        .content2 tr:hover {
-            background-color:#96e6e6;
-        }
-
-
+.content2 td {
+    width: 100px!important;
+    padding-left: 2px;
+    height: 25px;
+}
+.content2 tr:hover {
+    background-color: #0973b9;
+}
         table tr:nth-child(odd){
             background-color:#ffffff;
         }
@@ -371,9 +372,9 @@
     display:none;
     left:500px;
     top:200px;
-    height: 400px;
-    width: 700px;
-    border: 5px solid #0973b9;
+    height: 389px;
+    /*width: 700px;*/
+    border: 3px solid #0973b9;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     background-color:#ffffff;
@@ -381,7 +382,7 @@
 }
     .modal-header {
         position: absolute;
-        height: 50px;
+        /*height: 50px;*/
         width: 100%;
         background-color: #0973b9;
         display:flex;
@@ -397,13 +398,13 @@
 
     }
     .modal-body {
-        margin-top: 60px;
-        height: calc(400px - 100px);
+        margin-top: 38px;
+        height: calc(410px - 92px);
         width: 100%;
         border: unset !important;
         margin-right: 10px!important;
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
     }
     table{
         border-collapse:collapse !important;
@@ -419,41 +420,52 @@
         color: rgb(255, 0, 0) !important;
     }
 
-    #modal .input-create0 {
-        border: 1px solid #ccc;
-        height: 25px;
-        font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
-    }
+#modal .input-create0 {
+    border: 2px solid #ccc;
+    height: 25px;
+    font-family: Tahoma_Regular !important;
+    font-size: 13px !important;
+    border-radius: unset !important;
+}
         #modal .input-create0:focus {
             outline-color: blue;
+            border-radius:unset!important;
         }
-    #modal .input-create1 {
-        width: 98.6%;
-   
-    
-    }
-    #modal .input-create2 {
-            width: 98.9%;
-            height: 25px;
-            /*font-family: Tahoma_Regular !important;
+#modal .input-create1 {
+    width: 98.6%;
+    border-radius: unset !important;
+}
+#modal .input-create {
+    width: 97.6%;
+    height: 25px;
+    border-radius: unset !important;
+    /*font-family: Tahoma_Regular !important;
             font-size: 16px !important;*/
-        }
-    #modal .input-create3 {
-        width: 98.9%;
-        /*font-family: Tahoma_Regular !important;
+}
+#modal .input-create2 {
+    width: 99%;
+    height: 25px;
+    border-radius: unset !important;
+    /*font-family: Tahoma_Regular !important;
+            font-size: 16px !important;*/
+}
+#modal .input-create3 {
+    width: 99%;
+    /*font-family: Tahoma_Regular !important;
         font-size: 16px !important;*/
-        height: 40px;
-    }
+    height: 40px;
+    border-radius: unset !important;
+}
     #modal select {
-        width: 100%;
+        width: 103%;
         height: 29px;
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
-        border: 1px solid #ccc;
+        font-size: 13px !important;
+        border: 2px solid #ccc;
     }
         #modal select:focus {
             outline-color: blue;
+            border-radius:unset!important;
         }
     .modal-footer {
         width: 100%;
@@ -472,17 +484,17 @@
     }
     .footer-right button {
             display: flex;
-            height: 30px;
+            height: 25px;
             margin-right: 7px;
             font-family: Tahoma_Regular !important;
-            font-size: 16px !important;
-            padding:5px;
+            font-size: 13px !important;
+            padding:2px;
     }
     .modal-footer .footer-left button {
         display: flex;
         margin-right: 20px;
         font-family: Tahoma_Regular !important;
-        font-size: 16px !important;
+        font-size: 13px !important;
     }
 
     .bicon9 {

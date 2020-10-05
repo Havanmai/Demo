@@ -50,7 +50,9 @@ class Base {
             $("#table tbody").empty();
             // đọc thông tin các cột dữ liệu
             var fields = $("#table thead th");
-            var keyId = $("#table tbody tr").attr('keyId');
+            var keyId = $('#table tbody tr.row-selected').attr('keyId');
+            console.log(keyId);
+            debugger;
             //lấy dữ liệu
             var data = this.Data;
             //var employee = data;
@@ -58,6 +60,7 @@ class Base {
             $.each(data, function (index, obj) {
                 debugger;
                 var tr = $(`<tr keyId=` + obj.CustomerId + `></tr>`);
+                debugger;
                 $.each(fields, function (index, field) {
                     // binding du liệu
                     //TODO: them 1 truong chung voi ca thuoc tinh chung cua cac doi tuong de rut gon va tranh code xau
@@ -75,8 +78,9 @@ class Base {
                         var td = $(`<td  title="` + value + `">` + CommonJs.title(value) + `</td>`);
                     }
                     else {
-                        var td = $(`<td>` + value + `</td>`);
+                        var td = $(`<td >` + value + `</td>`);
                     }
+                    debugger
                     $(tr).data('keyId', obj[keyId]);
                     $(tr).data('data', obj);
                     $(tr).append(td);
@@ -164,8 +168,8 @@ class Base {
         if (IsValid) {
             var inputs = $('#modal tr td input[fieldName]');
             var object = {};
-            //var id = recordSelected.data('keyId');
-            //var objectDetail = recordSelected.data('data');
+            //var id = $('#table tbody tr.row-selected').attr('keyId');
+            //var objectDetail = $('#table tbody tr.row-selected').data('data');
 
             $.each(inputs, function (index, input) {
 
@@ -211,7 +215,8 @@ class Base {
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
         // lay du lieu thong tin cua danh sachs
-        var id = recordSelected.data('keyId');
+        debugger;
+        var id = recordSelected.attr('keyId');
         console.log(id);
         var objectDetail = recordSelected.data('data');
       
@@ -245,14 +250,17 @@ class Base {
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
         // lay du lieu thong tin cua danh sachs
-        var id = recordSelected.data('keyId');
-        var objectDetail = recordSelected.data('data');
+        debugger;
+        var id = recordSelected.attr('keyId');
+        console.log(id);
+        
         // hien thi thong tin xoa
         var result = confirm('ban co muon xoa khong?');
 
         //thuc hien xoa khi nhan oke
         if (result) {
             debugger;
+            data.pop();
 
         }
 
@@ -311,18 +319,15 @@ class Base {
         this.loadData();
 
     }
-    validata() {
+    //getRecorddata() {
+    //    // lay thong tin ban ghi da chon trong danh sach
+    //    var recordSelected = $('#table tbody tr.row-selected');
+    //    console.log(recordSelected);
+    //    // lay du lieu thong tin cua danh sachs
+    //    var id = recordSelected.data('keyId');
 
-    }
-    getRecorddata() {
-        // lay thong tin ban ghi da chon trong danh sach
-        var recordSelected = $('#table tbody tr.row-selected');
-        console.log(recordSelected);
-        // lay du lieu thong tin cua danh sachs
-        var id = recordSelected.data('keyId');
-
-        return id;
-    }
+    //    return id;
+    //}
     //#endregion 'Nut sự kiện'
 }
     /**dữ liệu ảo
