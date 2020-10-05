@@ -141,6 +141,7 @@ class Customer extends Base  {
         * edit: dữ liệu ảo  với 3 bản ghis*/
 var data = [
     {
+        CustomerId:1,
         CustomerCode: "KH001",
         CustomerName: "Linh Trang Nguyen",
         CustomerCompany: "VNPT",
@@ -152,6 +153,7 @@ var data = [
         Datetime: "09-01-2020"
     },
     {
+        CustomerId: 2,
         CustomerCode: "KH002",
         CustomerName: " Trang Nguyen",
         CustomerCompany: "VNPT",
@@ -163,6 +165,7 @@ var data = [
         Datetime: "09-01-2020"
     },
     {
+        CustomerId: 3,
         CustomerCode: "KH003",
         CustomerName: "Linh Nguyen",
         CustomerCompany: "VNPT",

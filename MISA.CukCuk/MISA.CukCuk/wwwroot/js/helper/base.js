@@ -25,7 +25,10 @@ class Base {
         $('#btnSave').click(this.btnSaveOnClick.bind(this));
         $('#table').on('click', 'tr', this.rowonclick);
         $('#btnReload').click(this.btnReloadOnClick.bind(this));
+        $('#btnChange').click(this.btnChangeOnClick.bind(this));
+        $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('input[required]').blur(this.checkRequired);
+        $('input[typeof]').blur(this.checkTypeOf);
     }
 
    
@@ -46,22 +49,23 @@ class Base {
             // xoas trong bang truoc khi load du lieu
             $("#table tbody").empty();
             // đọc thông tin các cột dữ liệu
-           var fields = $("#table thead th");
-                
+            var fields = $("#table thead th");
+            var keyId = $("#table tbody tr").attr('keyId');
             //lấy dữ liệu
             var data = this.Data;
             //var employee = data;
             //đọc dữ liệu ra
             $.each(data, function (index, obj) {
                 debugger;
-                var tr = $(`<tr></tr>`);
+                var tr = $(`<tr keyId=` + obj.CustomerId + `></tr>`);
                 $.each(fields, function (index, field) {
                     // binding du liệu
                     //TODO: them 1 truong chung voi ca thuoc tinh chung cua cac doi tuong de rut gon va tranh code xau
                     var fieldName = $(field).attr('fieldName');
                     var value = obj[fieldName];
+
                     if (fieldName == "Datetime" || fieldName == "DateOfBirth") {
-                        var td = $(`<td align="center">` + CommonJs.formatDate(value) + `</td>`);
+                        var td = $(`<td align="center" >` + CommonJs.formatDate(value) + `</td>`);
                     } else if (fieldName == "Salary" || fieldName == "DebitMoney") {
                         var td = $(`<td align="right">` + CommonJs.fomartMoney(value)+ `</td>`);
                     } else if (fieldName == "Mobile" || fieldName == "Code" ) {
@@ -73,8 +77,10 @@ class Base {
                     else {
                         var td = $(`<td>` + value + `</td>`);
                     }
-                   
+                    $(tr).data('keyId', obj[keyId]);
+                    $(tr).data('data', obj);
                     $(tr).append(td);
+
                     debugger;
                 })
                 $('#table tbody').append(tr);
@@ -91,8 +97,11 @@ class Base {
      Author: HVM:
      Edit: Hien modal*/
     btnAddOnClick() {
-        this.showDetailModal();
-        $(this).focus;
+        var self = this;
+        
+        self.showDetailModal();
+        self.FormMode = "Add";
+        $(self).focus;
     }
     /**tat modal
     Author: HVM:
@@ -124,24 +133,26 @@ class Base {
     btnSaveOnClick() {
         //validate thong tin nhap
         var inputRequieres = $('[required]');
+        
         var IsValid = true;
         //var Isemail=true
         //var self = this;
         var self = this;
+        
         $.each(inputRequieres, function (index, input) {
             
             var valid = $(input).trigger("blur");
-            if  ($(input).attr('typeof') == 'email') {
-                $(input).value = CommonJs.isInvalidEmail('#txtCustomerEmail');
-                if ($(input).value = false && IsValid && valid.hasClass('required-error')) {
-                    //}
+           
+                if ( IsValid && valid.hasClass('required-error')) {
+                    
                     //if (IsValid && valid.hasClass('required-error') ) {
                     IsValid = false;
                 }
                 else {
+
                     IsValid = true;
                 }
-            }
+            
         })
         
        
@@ -153,6 +164,8 @@ class Base {
         if (IsValid) {
             var inputs = $('#modal tr td input[fieldName]');
             var object = {};
+            //var id = recordSelected.data('keyId');
+            //var objectDetail = recordSelected.data('data');
 
             $.each(inputs, function (index, input) {
 
@@ -161,26 +174,23 @@ class Base {
                 //console.log(value);
                 debugger;
                 object[fieldName] = value;
-               
+              
 
                 //$(tr).append(td);
                 
                 
             })
-            //var customer = {
-            //    CustomerCode: $('#txtCustomerCode').val(),
-            //    CustomerName: $('#txtCustomerName').val(),
-            //    CustomerCompany: $('#txtCustomerCompany').val(),
-            //    Code: $('#txtCode').val(),
-            //    CustomerAddress: $('#txtCustomerAddress').val(),
-            //    CustomerEmail: $('#txtCustomerEmail').val(),
-            //    Mobile: $('#txtMobile').val(),
-            //    DebitMoney: $('#txtDebitMoney').val(),
-            //    Datetime: $('#txtDatetime').val()
-            //}
+            if (self.FormMode == 'Add') {
+                data.push(object);
+                alert('add');
+            } else {
+                //data.push(object);
+                debugger;
+                alert('edit');
+            }
             // gọi service thực hiện lưu dữ liệu
             // cat du lieu
-            data.push(object);
+            
             debugger;
             // load lai du lieu dong thoi tat dialog modal
             self.loadData();
@@ -191,6 +201,62 @@ class Base {
         
         
     }
+    /** ham cho nut sua
+     * author: HVM 05/10/2020
+     * edit:chi tiet nut sua thong tin trong bang content
+     * */
+    btnChangeOnClick() {
+        this.FormMode = "Edit";
+        // lay thong tin ban ghi da chon trong danh sach
+        var recordSelected = $('#table tbody tr.row-selected');
+        console.log(recordSelected);
+        // lay du lieu thong tin cua danh sachs
+        var id = recordSelected.data('keyId');
+        console.log(id);
+        var objectDetail = recordSelected.data('data');
+      
+       
+        // binding du lieu vao input tương ung tren form chi tiet:
+        // building du lieu can luu
+       
+            var inputs = $('#modal tr td input[fieldName]');
+
+
+            $.each(inputs, function (index, input) {
+
+                var fieldName = $(input).attr('fieldName');
+                input.value = objectDetail[fieldName];
+                if ($(input).attr('type')=='date') {
+                    input.value = CommonJs.formatDate(objectDetail[fieldName]);
+                    debugger;
+                }
+                debugger;
+            })
+        
+
+        this.showDetailModal();
+    }
+    /** ham cho nut xoa
+     * author: HVM 05/10/2020
+     * edit:chi tiet nut xoa thong tin trong bang content
+     * */
+    btnDeleteOnClick() {
+        // lay thong tin ban ghi da chon trong danh sach
+        var recordSelected = $('#table tbody tr.row-selected');
+        console.log(recordSelected);
+        // lay du lieu thong tin cua danh sachs
+        var id = recordSelected.data('keyId');
+        var objectDetail = recordSelected.data('data');
+        // hien thi thong tin xoa
+        var result = confirm('ban co muon xoa khong?');
+
+        //thuc hien xoa khi nhan oke
+        if (result) {
+            debugger;
+
+        }
+
+    }
     /**
      * kiem tra du lieu rong
      * author: HVM 30/09/2020
@@ -198,7 +264,6 @@ class Base {
     checkRequired() {
         var value = this.value;
         if (!value || value == 0 || value == "" || !(value && value.trim())) {
-
             $(this).addClass('required-error');
             $(this).attr("title", "Ban phai nhap thong tin");
             return;
@@ -211,11 +276,34 @@ class Base {
         }
 
     }
+    /**
+    * kiem tra du lieu truong email
+    * author: HVM 05/10/2020
+    * Edit: kiem tra trong du lieu khi nhap vao email cos ddungs dinh dang hay khong*/
+    checkTypeOf() {
+        var value = this.value;
+        if (!CommonJs.isInvalidEmail(value)) {
+            $(this).addClass('required-error');
+            $(this).attr("title", "Ban phai nhap dung thong tin email");
+            return;
+
+        }
+        else {
+            $(this).removeClass('required-error');
+            $(this).removeAttr("title", "Ban phai nhap dung thong tin email");
+
+        }
+
+    }
+    /**chon hang
+     * author: HVM 29/09/2020
+     * edit: xac dinh hang duoc chon*/
 
     rowonclick() {
         $(this).siblings().removeClass('row-selected');
         $(this).addClass('row-selected');
     }
+
     /**load lai du lieu
      * author: HVM 29/09/2020
      * edit: load du lieu nut nap*/
@@ -225,6 +313,15 @@ class Base {
     }
     validata() {
 
+    }
+    getRecorddata() {
+        // lay thong tin ban ghi da chon trong danh sach
+        var recordSelected = $('#table tbody tr.row-selected');
+        console.log(recordSelected);
+        // lay du lieu thong tin cua danh sachs
+        var id = recordSelected.data('keyId');
+
+        return id;
     }
     //#endregion 'Nut sự kiện'
 }
