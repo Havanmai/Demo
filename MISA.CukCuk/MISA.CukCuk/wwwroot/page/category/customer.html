@@ -131,9 +131,9 @@
                     <div class="content2">
                         <table id="table" keyId="CustomerId">
                             <thead>
-                                <tr >
-                                    
-                                    <th fieldName="CustomerCode" style="width:50px;"> Mã khách hàng</th>
+                                <tr>
+
+                                    <th fieldName="CustomerCode" style="width:150px;"> Mã khách hàng</th>
                                     <th fieldName="CustomerName">Tên khách hàng</th>
                                     <th fieldName="CustomerCompany">Tên công ty</th>
                                     <th fieldName="Code">Mã số thuế</th>
@@ -142,10 +142,11 @@
                                     <th fieldName="Mobile">SDT</th>
                                     <th fieldName="DebitMoney">Số tiền nợ</th>
                                     <th fieldName="Datetime">Ngày Mua</th>
+                                    <th fieldName="Gender">Giới tính</th>
                                 </tr>
                             </thead>
                             <tbody >
-                                <tr  >
+                                <tr>
                                     <td> Mã khách hàng</td>
                                     <td>Tên khách hàng</td>
                                     <td>Tên công ty</td>
@@ -155,6 +156,7 @@
                                     <td style="text-align:center">SDT</td>
                                     <td style="text-align:right">Số tiền nợ</td>
                                     <td style="text-align:center">Ngày Mua</td>
+                                    <td>Giới tính</td>
                                 </tr>
                                 <!--<tr>
                                     <td>MKH0123654789 </td>
@@ -284,8 +286,13 @@
                             <option>nhom 2</option>
                         </select>
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td id="Gender">Giới tính</td>
+                    <td>
+                        <input type="radio" id="male" name="gender" value="male" checked="checked">
+                        <label for="male">Nam</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Nữ</label>
+                    </td>
                 </tr>
                 <tr>
                     <td class="lbl">Số điện thoại</td>
@@ -322,13 +329,15 @@
             </table>
         </div>
         <div class="modal-footer">
+
             <div class="footer-left">
-                <button><i class="icon bicon9" id="btnHelp"></i>Giúp</button>
+                <button id="btnHelp"><i class="icon bicon9" ></i>Giúp</button>
             </div>
             <div class="footer-right">
-                <button id="btnSave"><span class="icon bicon10"></span>Cất</button>
-                <button id="btnSaveAdd"><span class="icon bicon11"></span>Cất & Thêm</button>
-                <button id="btnCancel"><span class="icon bicon12"></span>Hủy bỏ</button>
+            <button id="btnSave"><span class="icon bicon10"></span>Cất</button>
+            <button id="btnSaveAdd"><span class="icon bicon11"></span>Cất & Thêm</button>
+            <button id="btnCancel"><span class="icon bicon12"></span>Hủy bỏ</button>
+            
             </div>
         </div>
     </div>

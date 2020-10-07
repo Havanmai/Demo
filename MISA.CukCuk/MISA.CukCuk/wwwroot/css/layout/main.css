@@ -121,17 +121,9 @@
     }
     .title .title-right {
         display: flex;
-        /*height: 50px;*/
-        
-        /*margin: 5px 0px 5px 0px;*/
+
     }
     .title-right button {
-        /*display: flex;*/
-    
-        /*margin-right: 30px;*/
-       /* height: 30px;*/
-        /*justify-content: space-between;*/
-        /*padding-top: 5px;*/
         font-family: Tahoma_Regular !important;
         font-size: 13px !important;
     }
@@ -238,10 +230,10 @@
 
     
     }
-    .content2 table {
-       /* width: 100%;*/
-        border-collapse: collapse;
-    }
+        .content2 table {
+            /* width: 100%;*/
+            border-collapse: collapse;
+        }
 .content2 td {
     width: 100px!important;
     padding-left: 2px;
@@ -256,9 +248,10 @@
             table tr:nth-child(even) {
                 background-color: #eee;
             }
-    table th {
-        background-color: #eee;
-    }
+table th {
+    background-color: #eee;
+    width: 250px;
+}
  /*phân trang*/
     .grid-content .content3 {
         height: 28px;
@@ -277,13 +270,9 @@
     }
      .content3-left input {
             height: 23px;
-        
-        
             border: rgb(0, 148, 255);
             width: 30px;
             margin: 1px;
-            /*margin-left: 5px !important;
-            margin-right: 5px !important;*/
             background-color: #ffffff;
             border: 1px solid #ccc;
         }
@@ -298,8 +287,6 @@
         border: rgb(0, 148, 255);
         width: 30px;
         margin: 1px;
-        /*margin-left: 5px !important;
-            margin-right: 5px !important;*/
         background-color: #ffffff;
         border: 1px solid #ccc;
     }
@@ -375,7 +362,7 @@
     height: 389px;
     /*width: 700px;*/
     border: 3px solid #0973b9;
-    border-radius: 5px 5px 5px 5px;
+    /*border-radius: 5px 5px 5px 5px;*/
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     background-color:#ffffff;
     position:absolute;
@@ -428,7 +415,7 @@
     border-radius: unset !important;
 }
         #modal .input-create0:focus {
-            outline-color: blue;
+            outline-color:#488cf8;
             border-radius:unset!important;
         }
 #modal .input-create1 {
@@ -439,20 +426,16 @@
     width: 97.6%;
     height: 25px;
     border-radius: unset !important;
-    /*font-family: Tahoma_Regular !important;
-            font-size: 16px !important;*/
+   
 }
 #modal .input-create2 {
     width: 99%;
     height: 25px;
     border-radius: unset !important;
-    /*font-family: Tahoma_Regular !important;
-            font-size: 16px !important;*/
+    
 }
 #modal .input-create3 {
     width: 99%;
-    /*font-family: Tahoma_Regular !important;
-        font-size: 16px !important;*/
     height: 40px;
     border-radius: unset !important;
 }
@@ -464,8 +447,8 @@
         border: 2px solid #ccc;
     }
         #modal select:focus {
-            outline-color: blue;
-            border-radius:unset!important;
+            outline-color: #488cf8;
+            border-radius: unset !important;
         }
     .modal-footer {
         width: 100%;
@@ -473,7 +456,7 @@
         background-color: #ffffff;
         justify-content: space-between;
     }
-    .footer-left{
+.footer-left{
         display:flex;
         margin-left:10px;
     }
@@ -482,20 +465,28 @@
     
   
     }
-    .footer-right button {
+        .footer-right button {
             display: flex;
             height: 25px;
             margin-right: 7px;
             font-family: Tahoma_Regular !important;
             font-size: 13px !important;
-            padding:2px;
-    }
+            padding: 2px;
+            
+        }
+        footer-right button:focus {
+            outline-color: #488cf8;
+        }
     .modal-footer .footer-left button {
         display: flex;
         margin-right: 20px;
         font-family: Tahoma_Regular !important;
         font-size: 13px !important;
     }
+footer-left button:focus {
+    outline-color: #488cf8;
+}
+
 
     .bicon9 {
         background-image: url("../../content/image/Images/iconHelp.png");
