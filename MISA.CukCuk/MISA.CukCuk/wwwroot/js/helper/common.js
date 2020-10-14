@@ -19,17 +19,15 @@
       *  Author: HVM 29/09/2020
       */
      formatDate(date) {
-        // //date2 = new Date(date)
-        //var parts = date.split('-');
-        //// Please pay attention to the month (parts[1]); JavaScript counts months from 0:
-        //// January - 0, February - 1, etc.
-        // var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
-        // return mydate.toLocaleTimeString();
+         // //date2 = new Date(date)
+         var part1 = date.substr(0, 10);
+         var parts = part1.split('-');
+        // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+        // January - 0, February - 1, etc.
+         var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
+         return mydate.toLocaleDateString();
 
-        // //var date2 = Moment(date);
-         // //return date2.toISOString();
-         var dt = new Date(date);
-         return dt.ToString();
+        
 
 
 
