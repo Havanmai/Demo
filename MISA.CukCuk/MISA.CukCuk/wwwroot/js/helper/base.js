@@ -45,54 +45,84 @@ class Base {
      * Edit : load dữ liệu lên bảng*/
 
     loadData() {
-        try {
-            // xoas trong bang truoc khi load du lieu
-            $("#table tbody").empty();
-            // đọc thông tin các cột dữ liệu
-            var fields = $("#table thead th");
-            var keyId = $('#table tbody tr.row-selected').attr('keyId');
-            console.log(keyId);
+        
+        $.ajax({
+
+            url: "/api/CustomerApi",
+            method: "get",
+            data: "",// tham số sẽ truyền qua body request
+            contentType: "application/json",// 
+            dataType: ""
+            // co the dung de check lay đc api chưa
+
+            //success: function () {
+
+            //},
+            //fail: function () {
+
+            //} 
+
+        }).done(function (response) {
             debugger;
-            //lấy dữ liệu
-            var data = this.Data;
-            //var employee = data;
-            //đọc dữ liệu ra
-            $.each(data, function (index, obj) {
+            try {
+                // xoas trong bang truoc khi load du lieu
+                $("#table tbody").empty();
+                // đọc thông tin các cột dữ liệu
+                var fields = $("#table thead th");
+                var keyId = $('#table tbody tr.row-selected').attr('keyId');
+                //console.log(keyId);
                 debugger;
-                var tr = $(`<tr keyId=` + obj.CustomerId + `></tr>`);
-                debugger;
-                $.each(fields, function (index, field) {
-                    // binding du liệu
-                    //TODO: them 1 truong chung voi ca thuoc tinh chung cua cac doi tuong de rut gon va tranh code xau
-                    var fieldName = $(field).attr('fieldName');
-                    var value = obj[fieldName];
-
-                    if (fieldName == "Datetime" || fieldName == "DateOfBirth") {
-                        var td = $(`<td align="center" >` + CommonJs.formatDate(value) + `</td>`);
-                    } else if (fieldName == "Salary" || fieldName == "DebitMoney") {
-                        var td = $(`<td align="right">` + CommonJs.fomartMoney(value)+ `</td>`);
-                    } else if (fieldName == "Mobile" || fieldName == "Code" ) {
-                        var td = $(`<td align="center">` + value + `</td>`);
-                    }
-                    else if (fieldName == "CustomerEmail") {
-                        var td = $(`<td  title="` + value + `">` + CommonJs.title(value) + `</td>`);
-                    }
-                    else {
-                        var td = $(`<td >` + value + `</td>`);
-                    }
-                    debugger
-                    $(tr).data('keyId', obj[keyId]);
-                    $(tr).data('data', obj);
-                    $(tr).append(td);
-
+                //lấy dữ liệu
+                var data = this.Data;
+                //var employee = data;
+                //đọc dữ liệu ra
+                $.each(response, function (index, obj) {
                     debugger;
-                })
-                $('#table tbody').append(tr);
-            })
-        }
-        catch(e){
+                    var tr = $(`<tr keyId=` + obj.customerId + `></tr>`);
+                    debugger;
+                    $.each(fields, function (index, field) {
+                        // binding du liệu
+                        //TODO: them 1 truong chung voi ca thuoc tinh chung cua cac doi tuong de rut gon va tranh code xau
+                        var fieldName = $(field).attr('fieldName');
+                        var value = obj[fieldName];
 
-        }
+                        if (fieldName == "postedDate" ) {
+                            var td = $(`<td align="center" >` + CommonJs.formatDate(value) + `</td>`);
+                        } else if (fieldName == "debitAmount") {
+                            var td = $(`<td align="right">` + CommonJs.fomartMoney(value) + `</td>`);
+                        } else if (fieldName == "phoneNumber" || fieldName == "taxCode") {
+                            var td = $(`<td align="center">` + value + `</td>`);
+                        }
+                        else if (fieldName == "email") {
+                            var td = $(`<td  title="` + value + `">` + CommonJs.title(value) + `</td>`);
+                        }
+                        else {
+                            var td = $(`<td >` + value + `</td>`);
+                        }
+                        //var td = $(`<td >` + value + `</td>`);
+                        debugger
+                        $(tr).data('keyId', obj[keyId]);
+                        $(tr).data('data', obj);
+                        $(tr).append(td);
+
+                        debugger;
+                    })
+                    $('#table tbody').append(tr);
+                })
+            }
+            catch (e) {
+
+            }
+        
+
+        }).fail(function (response) {
+
+        })
+       
+
+
+        // lấy dữ liệu thông qua lời gọi từ api
+        
 
     }
     //#region 'Nut sự kiện'

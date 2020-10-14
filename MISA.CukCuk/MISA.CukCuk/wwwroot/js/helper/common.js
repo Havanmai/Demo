@@ -8,23 +8,35 @@
       * @param {string} _money
       *  Author: HVM 298/09/2020
       */
-    fomartMoney(money) {
-        return money.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+     fomartMoney(money) {
+         return money.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
-         },
-     /**
+     },
+        /**
       * Ham format ngay
       * @param {date} _date
  
       *  Author: HVM 29/09/2020
       */
-    formatDate(date) {
-        var parts = date.split('-');
-        // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
-        // January - 0, February - 1, etc.
-        var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
-        return mydate.toLocaleDateString();
+     formatDate(date) {
+        // //date2 = new Date(date)
+        //var parts = date.split('-');
+        //// Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+        //// January - 0, February - 1, etc.
+        // var mydate = new Date(parts[2], parts[1] - 1, parts[0]);
+        // return mydate.toLocaleTimeString();
+
+        // //var date2 = Moment(date);
+         // //return date2.toISOString();
+         var dt = new Date(date);
+         return dt.ToString();
+
+
+
+        
      },
+   
+
   
     /**
      * ham check email
