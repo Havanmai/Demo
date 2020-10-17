@@ -457,13 +457,15 @@ table th {
         background-color: #ffffff;
         justify-content: space-between;
     }
+    
 .footer-left{
-        display:flex;
+       /* display:flex;*/
         margin-left:10px;
+        order: 1;
     }
     .footer-right {
         display: flex;
-    
+        order:2;
   
     }
         .footer-right button {

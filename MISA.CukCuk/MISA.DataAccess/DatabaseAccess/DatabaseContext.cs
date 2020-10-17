@@ -27,6 +27,7 @@ namespace MISA.DataAccess.DatabaseAccess
             _sqlCommand.CommandType = CommandType.StoredProcedure;
         }
         #endregion
+        #region method
         /// <summary>
         /// lay du lieu customer
         /// author: HVM(29/05/2020)
@@ -70,6 +71,12 @@ namespace MISA.DataAccess.DatabaseAccess
 
 
 
+        /// <summary>
+        /// 
+        /// lay dữ liệu của tất cả khach hang 
+        /// author:HVM(16/10/2020)
+        /// </summary>
+        /// <returns>trả về danh sách các bản ghi</returns>
         public IEnumerable<T> Get()
         {
             var employees = new List<T>();
@@ -111,31 +118,31 @@ namespace MISA.DataAccess.DatabaseAccess
             // lấy dữ liệu từ database;
             // khởi tạo thông tin kết nối
             //var customers = new List<Customer>();
-
-            _sqlCommand.CommandText = "Proc_GetCustomerId";
-            _sqlCommand.Parameters.AddWithValue("@CustomerId", id);
+            var className = typeof(T).Name;
+            _sqlCommand.CommandText = $"Proc_Get{className}Id";
+            _sqlCommand.Parameters.AddWithValue($"@{className}Id", id);
             // thực hiện đọc dữ liệu
 
             MySqlDataReader reader = _sqlCommand.ExecuteReader();
 
             while (reader.Read())
             {
-                var customer = Activator.CreateInstance<T>();
+                var entity = Activator.CreateInstance<T>();
 
                 for (int i = 0; i < reader.FieldCount; i++)
                 {
                     var columnName = reader.GetName(i);
                     var value = reader.GetValue(i);
-                    var propertyInfo = customer.GetType().GetProperty(columnName);
+                    var propertyInfo = entity.GetType().GetProperty(columnName);
                     if (propertyInfo != null && value != DBNull.Value)
                     {
-                        propertyInfo.SetValue(customer, value);
+                        propertyInfo.SetValue(entity, value);
                     }
 
                 }
 
 
-                return customer;
+                return entity;
 
             }
             // 1 kết nối database
@@ -144,6 +151,12 @@ namespace MISA.DataAccess.DatabaseAccess
 
             return default;
         }
+        /// <summary>
+        /// Them mơi 1 bản ghi
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        ///  HVM (17/10/2020)
         public int Insert(T entity)
         {
             var entityName = typeof(T).Name;
@@ -177,34 +190,43 @@ namespace MISA.DataAccess.DatabaseAccess
             var affectRows = _sqlCommand.ExecuteNonQuery();
             return affectRows;
         }
+        /// <summary>
+        /// Hàm update bản ghi
+        /// </summary>
+        /// <param name="entity">truyền vào 1 đối tượng</param>
+        /// <returns> số bản ghi bị cập nhật</returns>
+        ///  HVM (17/10/2020)
         public int Update(T entity)
         {
             // lấy dữ liệu từ database;
             // khởi tạo thông tin kết nối
             //var customers = new List<Customer>();
-            var customer = entity as Customer;
-            _sqlCommand.CommandText = "Proc_UpdateCustomer";
-            _sqlCommand.Parameters.AddWithValue("@CustomerId", customer.CustomerId);
-            _sqlCommand.Parameters.AddWithValue("@CustomerCode", customer.CustomerCode);
-            _sqlCommand.Parameters.AddWithValue("@CustomerName", customer.CustomerName);
-            _sqlCommand.Parameters.AddWithValue("@Address", customer.Address);
-            _sqlCommand.Parameters.AddWithValue("@Email", customer.Email);
-            _sqlCommand.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
-            _sqlCommand.Parameters.AddWithValue("@TaxCode", customer.TaxCode);
-            _sqlCommand.Parameters.AddWithValue("@GroupCustomerId", customer.GroupCustomerId);
-            _sqlCommand.Parameters.AddWithValue("@CardClassId", customer.CardClassId);
-            _sqlCommand.Parameters.AddWithValue("@CustomerCompany", customer.CustomerCompany);
-            _sqlCommand.Parameters.AddWithValue("@DebitAmount", customer.DebitAmount);
-            _sqlCommand.Parameters.AddWithValue("@Gender", customer.Gender);
-
-
-            int afffectRows = _sqlCommand.ExecuteNonQuery();
-            // 1 kết nối database
-            //2 thực thi câu lệnh
-            // trả về dữ liệu
-
-            return afffectRows;
+            var entityName = typeof(T).Name;
+            //_sqlCommand.Parameters.Clear();
+            _sqlCommand.CommandText = $"Proc_Update{entityName}";
+          
+            MySqlCommandBuilder.DeriveParameters(_sqlCommand);
+            var parameters = _sqlCommand.Parameters;
+            var properties = typeof(T).GetProperties();
+            foreach (MySqlParameter param in parameters)
+            {
+                var paramName = param.ParameterName.Replace("@", string.Empty);
+                var property = entity.GetType().GetProperty(paramName);
+                //var property = entity.GetType().GetProperty(paramName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                if (property.Name == "customerId")
+                    param.Value = Guid.Parse((string)property.GetValue(entity));
+                if (property != null)
+                    param.Value = property.GetValue(entity);
+            }
+            var affectRows = _sqlCommand.ExecuteNonQuery();
+            return affectRows;
         }
+        /// <summary>
+        /// Hàm xóa bản ghi theo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// HVM (17/10/2020)
         public int DeleteId(object id)
         {
             var entityName = typeof(T).Name;
@@ -218,6 +240,11 @@ namespace MISA.DataAccess.DatabaseAccess
             var affectRows = _sqlCommand.ExecuteNonQuery();
             return affectRows;
         }
+        #endregion
+        /// <summary>
+        /// hàm đóng kết nối 
+        /// </summary>
+        /// HVM(16/10/2020)
         public void Dispose()
         {
             _sqlConnection.Close();

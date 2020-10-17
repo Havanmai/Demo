@@ -33,18 +33,18 @@ namespace MISA.CukCuk.Api
         [HttpGet("{id}")]
         public IActionResult Get([FromRoute] Guid id)
         {
-            var employee = _baseService.GetById(id);
-            if (employee != null)
-                return Ok(employee);
+            var entity = _baseService.GetById(id);
+            if (entity != null)
+                return Ok(entity);
             else
                 return NoContent();
         }
 
         // POST api/<BaseApi>
         [HttpPost]
-        public IActionResult Post([FromBody] T employee)
+        public IActionResult Post([FromBody] T entity)
         {
-            var serviceResponse = _baseService.Insert(employee);
+            var serviceResponse = _baseService.Insert(entity);
             var affectRows = serviceResponse.Data != null ? ((int)serviceResponse.Data) : 0;
             if (affectRows > 0)
                 return CreatedAtAction("POST", affectRows);
@@ -55,8 +55,15 @@ namespace MISA.CukCuk.Api
 
         // PUT api/<BaseApi>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(Guid id, [FromBody] T entity)
+        
         {
+           
+            var affectRows = _baseService.Update(entity);
+            if (affectRows > 0)
+                return Ok(affectRows);
+            else
+                return NoContent();
         }
 
         // DELETE api/<BaseApi>/5

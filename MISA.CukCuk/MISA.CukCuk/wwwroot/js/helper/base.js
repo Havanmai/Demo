@@ -218,6 +218,17 @@ class Base {
             if (self.FormMode == 'Add') {
                 data.push(object);
                 alert('add');
+                $.ajax({
+                    url: "",
+                    method: "",
+                    contentType: "application/json",
+                    data: "",
+                    dataType: ""
+                }).done(function () {
+                    debugger;
+                }).fail(function () {
+                    debugger;
+                })
             } else {
                 //data.push(object);
                 debugger;
