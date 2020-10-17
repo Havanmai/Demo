@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MISA.CukCuk.Models
+namespace MISA.Common.Models
 {
     public class Position
     {

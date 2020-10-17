@@ -10,6 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MISA.Business.Interface;
+using MISA.Business.Service;
+using MISA.DataAccess;
+using MISA.DataAccess.Interface;
+using MISA.DataAccess.Repository;
 
 namespace MISA.CukCuk
 {
@@ -26,6 +31,8 @@ namespace MISA.CukCuk
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            DIConfig.InjectionConfig(services);
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

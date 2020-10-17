@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using MySql.Data.MySqlClient;
-using MISA.Common.Models;
-using MISA.DataAccess;
 using MISA.Business.Interface;
-using MISA.Business.Service;
-
-
+using MISA.Common.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,15 +12,14 @@ namespace MISA.CukCuk.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerApi : BaseApi<Customer>
+    public class GroupCustomerApi : BaseApi<GroupCustomer>
     {
         
-
-        
-         public CustomerApi(IBaseService<Customer> customerService):base(customerService)
+         public GroupCustomerApi(IBaseService<GroupCustomer> groupCustomerServiece):base(groupCustomerServiece)
         {
-           
+            
         }
-        
+       
+       
     }
 }

@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MISA.CukCuk.Models
+namespace MISA.Common.Models
 {
-    public class CardClass
-
+    public class Department
     {
-        public CardClass()
+        public Department()
         {
-            CardClassId = Guid.NewGuid();
-
+            DepartmentId = Guid.NewGuid();
         }
-        public Guid CardClassId { get; set; }
-        public string CardClassCode { get; set; }
-        public string CardClassName { get; set; }
+        public Guid DepartmentId { get; set; }
+        public string DepartmentCode { get; set; }
+        public string DepartmentName { get; set; }
         public DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public DateTime ModifiedDay { get; set; }

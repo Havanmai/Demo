@@ -136,6 +136,7 @@ class Base {
         self.showDetailModal();
         self.FormMode = "Add";
         $(self).focus;
+        
     }
     /**tat modal
     Author: HVM:

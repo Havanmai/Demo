@@ -1,4 +1,0 @@
-﻿namespace MISA.CukCuk.Api
-{
-    
-}

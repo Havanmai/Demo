@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
 using MySql.Data.MySqlClient;
-using MISA.CukCuk.Models;
+using MISA.Common.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,6 +16,7 @@ namespace MISA.CukCuk.Api
     [ApiController]
     public class EmployeeApi : ControllerBase
     {
+        
         // GET: api/<EmployeeApi>
         [HttpGet]
         public IEnumerable<Employee> Get()
