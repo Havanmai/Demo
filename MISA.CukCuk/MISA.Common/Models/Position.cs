@@ -7,7 +7,12 @@ namespace MISA.Common.Models
 {
     public class Position
     {
+        public Position()
+        {
+            PositionId = Guid.NewGuid();
+        }
         public Guid PositionId { get; set; }
+        
         public string PositionCode { get; set; }
         public string PositionName { get; set; }
         public DateTime CreateDate { get; set; }

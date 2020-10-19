@@ -30,6 +30,23 @@
 
         
      },
+     /*
+       * Ham format ngay
+      * @param {date} _date
+      *  Author: HVM 29/09/2020
+      */
+     formatDatel(date) {
+         //date2 = new Date(date)
+         var part1 = date.slice(0, 10).split('-').reverse().join("/");
+         // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+         // January - 0, February - 1, etc.
+         //var mydate = new Date(parts[1] - 1, parts[0], parts[2]);
+         //return mydate.toLocaleDateString();
+         return part1;
+
+
+
+     },
    
 
   

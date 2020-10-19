@@ -11,7 +11,7 @@ namespace MISA.Business.Interface
         /// Lấy dữ liệu
         /// </summary>
         /// <returns></returns>
-        /// CreatedBy: NVMANH (15/10/2020)
+        /// CreatedBy: HVM(15/10/2020)
         IEnumerable<T> Get();
 
         T GetById(Guid objectId);

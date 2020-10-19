@@ -1,2 +1,222 @@
-﻿body {
+﻿.modal {
+    display: none;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #808080;
+    position: absolute;
+    opacity: 0.6;
 }
+
+.modal-content {
+    display: none;
+    left: 500px;
+    top: 200px;
+    /*height: 389px;*/
+    /*width: 700px;*/
+    border: 3px solid #0973b9;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: #ffffff;
+    position: absolute; 
+    padding-bottom:10px;
+}
+
+.modal-header {
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    background-color: #0973b9;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2px;
+    padding-left: 1px;
+    color: #ffffff;
+    
+}
+
+    .modal-header > p {
+        color: #ffffff;
+    }
+
+    .modal-header .close {
+        margin-right: 10px;
+        color: #ffffff;
+    }
+
+.modal-body {
+    margin-top: 30px;
+    /*height: calc(410px - 92px);*/
+    width: 100%;
+    border: unset !important;
+    margin-right: 10px !important;
+    font-family: Tahoma_Regular !important;
+    font-size: 13px !important;
+}
+
+table {
+    border-collapse: collapse !important;
+}
+
+#modal td {
+    background-color: #ffffff !important;
+    border:unset !important;
+   
+    /*width: 150px !important;*/
+}
+
+#modal .note {
+    color: rgb(255, 0, 0) !important;
+}
+
+#modal .input-create0 {
+    border: 2px solid #ccc;
+    height: 20px;
+    font-family: Tahoma_Regular !important;
+    font-size: 13px !important;
+    border-radius: unset !important;
+}
+
+    #modal .input-create0:focus {
+        outline-color: #488cf8;
+        border-radius: unset !important;
+    }
+
+#modal .input-create1 {
+    width: 98.4%;
+    border-radius: unset !important;
+}
+
+#modal .input-create {
+    width: 98%;
+    height: 20px;
+    border-radius: unset !important;
+}
+
+#modal .input-create2 {
+    width: 99%;
+    height: 20px;
+    border-radius: unset !important;
+}
+
+#modal .input-create3 {
+    width: 99%;
+    height: 40px;
+    border-radius: unset !important;
+}
+
+#modal select {
+    width: 100%;
+    height: 26px!important;
+    font-family: Tahoma_Regular !important;
+    font-size: 13px !important;
+    border: 2px solid #ccc;
+}
+
+    #modal select:focus {
+        outline-color: #488cf8;
+        border-radius: unset !important;
+    }
+
+.modal-footer {
+    width: 100%;
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-between;
+    padding-top:10px;
+    
+}
+
+.footer-left {
+    /* display:flex;*/
+    margin-left: 10px;
+    order: 2;
+}
+
+.footer-left {
+    display: flex;
+    order: 1;
+}
+
+    .footer-left button {
+        display: flex;
+        height: 25px;
+        margin-right: 10px;
+        font-family: Tahoma_Regular !important;
+        font-size: 13px !important;
+        padding: 2px;
+    }
+
+footer-left button:focus {
+    outline-color: #488cf8;
+}
+
+.modal-footer .footer-right button {
+    display: flex;
+    margin-right: 20px;
+    font-family: Tahoma_Regular !important;
+    font-size: 13px !important;
+}
+
+footer-right button:focus {
+    outline-color: #488cf8;
+}
+
+
+.bicon9 {
+    background-image: url("../../../content/image/Images/iconHelp.png");
+    padding-right: 15px;
+    margin-top: 2px;
+}
+
+.bicon10 {
+    background-image: url("../../../content/image/Images/IconSprite.png");
+    background-position-y: -768px !important;
+    padding-right: 15px;
+    margin-top: 2px;
+}
+
+.bicon11 {
+    background-image: url("../../../content/image/Images/IconSprite.png");
+    background-position-y: -737px !important;
+    padding-right: 15px;
+    margin-top: 2px;
+}
+
+.bicon12 {
+    background-image: url("../../../content/image/Images/IconSprite.png");
+    background-position-y: -1952px !important;
+    padding-right: 15px;
+    margin-top: 2px;
+}
+.avatar-box {
+    position: relative;
+    width: 130px;
+    height: 140px;
+    border: 1px solid #ccc;
+    background-image: url('../../../content/image/Images/avatardefault.png');
+    background-position-y: -8px;
+    background-position-x: center;
+}
+
+    .avatar-box .btn-select-avatar {
+        position: absolute;
+        bottom: 8px;
+        left: 24px;
+    }
+
+    .avatar-box .btn-remove-avatar {
+        position: absolute;
+        bottom: 8px;
+        right: 24px;
+    }
+
+    .avatar-box .ct-btn-avatar {
+        min-width: 28px !important;
+        height: 19px;
+        line-height: 7px;
+    }
+
+        .avatar-box .ct-btn-avatar .btn-remove-avatar {
+            color: #f00;
+        }

@@ -5,7 +5,7 @@
     <title></title>
     <link href="../../css/layout/main.css" rel="stylesheet" />
     <link href="../../css/layout/sidebar.css" rel="stylesheet" />
-
+    <link href="../../css/page/category/employee.css" rel="stylesheet" />
     <link href="../../css/element/table.css" rel="stylesheet" />
 </head>
 <body>
@@ -103,6 +103,8 @@
                         <option>Tiếng Việt(Tiếng Việt)</option>
                     </select>
                     <span class="icon Eath-icon"></span>
+                    <span class="icon phone-icon"></span>
+                    <div class="account-menu-icon-left"></div>
                     <label class="header-right user">Ha Van Mai </label>
                     <span class="icon drop-down-icon"></span>
                 </div>
@@ -129,90 +131,37 @@
                         <button><span class="icon bicon8"></span>Giúp</button>
                     </div>
                     <div class="content2">
-                        <table id="table">
+                        <table id="table" keyId="employeeId"> 
                             <thead>
-                                <tr>
-                                    <th fieldName="EmployeeCode"> Mã Nhân Viên</th>
-                                    <th fieldName="EmployeeName">Tên Nhân Viên</th>
-                                    <th fieldName="Gender">Giới tính</th>
-                                    <th fieldName="DateOfBirth">Ngày sinh</th>
-                                    <th fieldName="Mobile">SDT</th>
-                                    <th fieldName="PositionName">Vị trí</th>
-                                    <th fieldName="DepartmentsName">Phòng ban </th>
-                                    <th fieldName="Email">Email</th>
-                                    <th fieldName="Salary">Mức lương </th>
-                                    <th fieldName="WorkStatus">Tình trạng công việc</th>
+                                <tr url="employees">
+                                    <th fieldName="employeeCode"> Mã Nhân Viên</th>
+                                    <th fieldName="employeeName">Tên Nhân Viên</th>
+                                    <th fieldName="genderName">Giới tính</th>
+                                    <th fieldName="dateOfBirth">Ngày sinh</th>
+                                    <th fieldName="phoneNumber">SDT</th>
+                                    <th fieldName="positionName">Vị trí</th>
+                                    <th fieldName="departmentName">Phòng ban </th>
+                                    <th fieldName="email">Email</th>
+                                    <th fieldName="salary">Mức lương </th>
+                                    <th fieldName="workStatus">Tình trạng công việc</th>
 
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
+                                <!--<tr>
                                     <td> Mã Nhân Viên</td>
                                     <td>Tên Nhân Viên</td>
                                     <td>Giới tính</td>
                                     <td style="text-align:center">Ngày sinh</td>
-                                    <td style="text-align:center">SDT</td>
+                                    <td>SDT</td>
                                     <td>Vị trí</td>
                                     <td>Phòng ban </td>
                                     <td>Email</td>
                                     <td style="text-align:right">Mức lương </td>
-                                    <td style="text-align:center">Tình trạng công việc</td>
-                                </tr>
-                                <!--<tr>
-                                    <td>MKH0123654789 </td>
-                                    <td>Nguyễn Minh Trang</td>
-                                    <td>Công ty cổ phần MISA</td>
-                                    <td>032145697</td>
-                                    <td>Hà Nội</td>
-                                    <td>misa@gmail.com</td>
-                                    <td>0397564823</td>
-                                </tr>
-                                <tr>
-                                    <td>MKH0123654789 </td>
-                                    <td>Nguyễn Minh Trang</td>
-                                    <td>Công ty cổ phần MISA</td>
-                                    <td>032145697</td>
-                                    <td>Hà Nội</td>
-                                    <td>misa@gmail.com</td>
-                                    <td>0397564823</td>
-                                </tr>
-                                <tr>
-                                    <td>MKH0123654789 </td>
-                                    <td>Nguyễn Minh Trang</td>
-                                    <td>Công ty cổ phần MISA</td>
-                                    <td>032145697</td>
-                                    <td>Hà Nội</td>
-                                    <td>misa@gmail.com</td>
-                                    <td>0397564823</td>
-                                </tr>
-                                <tr>
-                                    <td>MKH0123654789 </td>
-                                    <td>Nguyễn Minh Trang</td>
-                                    <td>Công ty cổ phần MISA</td>
-                                    <td>032145697</td>
-                                    <td>Hà Nội</td>
-                                    <td>misa@gmail.com</td>
-                                    <td>0397564823</td>
-
-                                </tr>
-                                <tr>
-                                    <td>MKH0123654789 </td>
-                                    <td>Nguyễn Minh Trang</td>
-                                    <td>Công ty cổ phần MISA</td>
-                                    <td>032145697</td>
-                                    <td>Hà Nội</td>
-                                    <td>misa@gmail.com</td>
-                                    <td>0397564823</td>
-                                </tr>
-                                <tr>
-                                    <td>MKH0123654789 </td>
-                                    <td>Nguyễn Minh Trang</td>
-                                    <td>Công ty cổ phần MISA</td>
-                                    <td>032145697</td>
-                                    <td>Hà Nội</td>
-                                    <td>misa@gmail.com</td>
-                                    <td>0397564823</td>
+                                    <td>Tình trạng công việc</td>
                                 </tr>-->
+                            </thead>
+                            <tbody>
+                               
+                                
 
                             </tbody>
                         </table>
@@ -255,82 +204,127 @@
     <div class="modal"></div>
     <div class="modal-content">
         <div class="modal-header">
-            <p>Khách hàng</p>
-            <span class="close">&times;</span>
+            <b >Thông tin nhân viên</b>
+            <b class="close">&times;</b>
         </div>
         <div class="modal-body">
             <table id="modal">
-                <tr>
-                    <td class="lbl">Mã Khách hàng<span class="note">(*)</span></td>
-                    <td><input type="text" class="input-create0 input-create" id="txtCustomerCode" /></td>
-                    <td class="lbl">Tên Khách hàng<span class="note">(*)</span></td>
-                    <td><input type="text" class="input-create0 input-create" id="txtCustomerName" /></td>
-                </tr>
-                <tr>
-                    <td class="lbl">Mã thành viên</td>
-                    <td><input type="text" class="input-create0 input-create" id="txtCode" /></td>
-                    <td class="lbl">Hạng thẻ</td>
+                <tr style="margin-bottom:5px!important;">
+                    <td colspan="5" style="padding-bottom:5px; border-bottom:1px solid #ccc !important"><b>Thông tin chung</b></td>
 
-                    <td>
-                        <select>
-                            <option>loai 1</option>
-                            <option>loai 2</option>
-                        </select>
+
+                </tr>
+                <tr style="margin-top:5px;">
+
+                    <td class="lbl">Mã nhân viên<span class="note">(*)</span></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" id="txtCustomerCode" fieldName="employeeCode" required/></td>
+                    <td rowspan="6">
+                        <div class="avatar-box">
+                            <div style="height:0;overflow:hidden">
+                                <form action="/" method="post" enctype="multipart/form-data" >
+                                    <input type="file" id="fileInput" name="" value="" />
+                                </form>
+                            </div>
+                            <button class=" btn-select-avatar" >...</button>
+                            <button class=" btn-remove-avatar " disabled></button>
+                        </div>
+                        <div class="tip-upload">
+                            Chỉ được upload tệp <br /><b>.jpg .jpeg, .png, .gif</b>
+                        </div>
+                        <div class="box-select-avatar">
+                            <input type="file" hidden="hidden" />
+                        </div>
                     </td>
                 </tr>
                 <tr>
-                    <td class="lbl">Nhóm khách hàng</td>
-                    <td>
-                        <select>
-                            <option>nhom 1</option>
-                            <option>nhom 2</option>
-                        </select>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="lbl">Số điện thoại</td>
-                    <td><input type="text" class="input-create0 input-create" id="txtMobile" /></td>
-                    <td></td>
-                    <td></td>
+                    <td class="lbl">Tên nhân viên<span class="note">(*)</span></td>
+                    <td colspan="3" ><input type="text" class="input-create0 input-create" id="txtEmployeeName" fieldName="employeeName" required/></td>
                 </tr>
                 <tr>
                     <td class="lbl">Ngày sinh</td>
-                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" /></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn"  style="width:154px;" fieldName="dateOfBirth" /></td>
+                    <td class="lbl"> Giới tính</td>
+                    <td>
+                        <select fieldName="genderName" >
+                            <option id="male" name="gender" value="male" style="height:26px;">Nam</option>
+                            <option id="female" name="gender" value="female" style="height:26px;">Nữ</option>
+                        </select>
+                        
+                    </td>
                 </tr>
                 <tr>
-                    <td class="lbl">Tên Công ty</td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create2" id="txtCustomerCompany" /></td>
+                    <td class="lbl">Email<span class="note">(*)</span></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" required fieldName="email"/></td>
+                </tr>
+                <tr>
+                    <td class="lbl">ĐT Di động<span class="note">(*)</span></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" id="txtPhoneNumber" fieldName="phoneNumber" required/></td>
 
                 </tr>
                 <tr>
-                    <td class="lbl">Mã số thuế</td>
-                    <td><input type="text" class="input-create0 input-create" id="Code" /></td>
-                    <td class="lbl">Email</td>
-                    <td><input type="text" class="input-create0 input-create" /></td>
+                    <td class="lbl">Số CMT/HC</td>
+                    <td><input type="text" class="input-create0 input-create"  style="width:151px;"  fieldName="taxCode"/></td>
+                    <td class="lbl">Ngày cấp</td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;height:23px;" fieldName="phoneNumber"/></td>
                 </tr>
                 <tr>
-                    <td class="lbl">Địa chỉ</td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create2" id="txtCustomerAddress" /></td>
+                    <td class="lbl">Nơi cấp CMT</td>
+                    <td colspan="4"><input type="text" class="input-create0 input-create" style="width:98.6%;" fieldName="address" /></td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="5" style="padding-bottom:5px; border-bottom:1px solid #ccc !important"><b>Thông tin công việc</b></td>
+                </tr>
+                <tr>
+                    <td class="lbl" style="margin-top:15px !important;">Vị trí</td>
+                    <td colspan="4">
+                        <select fieldName="positionName">
+                            <option style="height:26px;">nhom 1</option>
+                            <option style="height:26px;">nhom 2</option>
+                        </select >
+                    </td>
 
                 </tr>
                 <tr>
-                    <td class="lbl">Ghi chú</td>
-                    <td colspan="3"><textarea class="input-create0 input-create3" id="txtNote"></textarea></td>
+                    <td class="lbl">Phòng ban</td>
+                    <td colspan="4" >
+                        <select fieldName="departmentName"  >
+                            <option  style="height:26px;">nhom 1</option>
+                            <option  style="height:26px;">nhom 2</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="lbl">Mã số thuế cá nhân</td>
+                    <td><input type="text" class="input-create0 input-create" style="width:151px;"  fieldName="taxCode"/></td>
+                    <td class="lbl">Mức lương</td>
+                    <td colspan="2" ><input type="text" class="input-create0 input-create1"  style="text-align:right;position:relative;width:80.7%; padding-right:50px;"  fieldName="salary">
+                    <span style=" font-style:italic; right:20px;position:absolute; padding-top:5px;"> &nbsp;(VNĐ)</span></td>
+                </tr>
+                <tr>
+                    <td class="lbl">Ngày gia nhập</td>
+                    <td><input type="date" class="input-create0 input-create2" id="txtDateBorn" style="width:154px;"/></td>
+                    <td class="lbl">Tình trạng</td>
+                    <td colspan="2" >
+                        <select>
+                            <option style="height:26px;">nhom 1</option>
+                            <option style="height:26px;">nhom 2</option>
+                        </select>
+                    </td>
+                </tr>
 
             </table>
         </div>
         <div class="modal-footer">
             <div class="footer-left">
-                <button><i class="icon bicon9" id="btnHelp"></i>Giúp</button>
-            </div>
-            <div class="footer-right">
                 <button id="btnSave"><span class="icon bicon10"></span>Cất</button>
                 <button id="btnSaveAdd"><span class="icon bicon11"></span>Cất & Thêm</button>
                 <button id="btnCancel"><span class="icon bicon12"></span>Hủy bỏ</button>
+                
+            </div>
+            <div class="footer-right">
+                <button><i class="icon bicon9" id="btnHelp"></i>Giúp</button>
             </div>
         </div>
     </div>

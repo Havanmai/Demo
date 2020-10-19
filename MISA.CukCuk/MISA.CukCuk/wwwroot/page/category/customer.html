@@ -5,7 +5,7 @@
     <title></title>
     <link href="../../css/layout/main.css" rel="stylesheet" />
     <link href="../../css/layout/sidebar.css" rel="stylesheet" />
-
+    <link href="../../css/page/category/customer.css" rel="stylesheet" />
     <link href="../../css/element/table.css" rel="stylesheet" />
 </head>
 <body>
@@ -131,7 +131,7 @@
                     <div class="content2">
                         <table id="table" keyId="customerId">
                             <thead>
-                                <tr>
+                                <tr url="CustomerApi">
 
                                     <th fieldName="customerCode" style="width:150px;"> Mã khách hàng</th>
                                     <th fieldName="customerName">Tên khách hàng</th>
@@ -208,13 +208,13 @@
             <table id="modal">
                 <tr>
                     <td class="lbl">Mã Khách hàng<span class="note">(*)</span></td>
-                    <td><input type="text" class="input-create0 input-create" id="txtCustomerCode"  required fieldName="CustomerCode"/></td>
+                    <td><input type="text" class="input-create0 input-create" id="txtCustomerCode"  required fieldName="customerCode"/></td>
                     <td class="lbl">Tên Khách hàng<span class="note">(*)</span></td>
-                    <td><input type="text" class="input-create0 input-create" id="txtCustomerName" required fieldName="CustomerName"/></td>
+                    <td><input type="text" class="input-create0 input-create" id="txtCustomerName" required fieldName="customerName"/></td>
                 </tr>
                 <tr>
                     <td class="lbl">Mã thành viên</td>
-                    <td><input type="text" class="input-create0 input-create" id="txtCode" fieldName="DebitMoney" /></td>
+                    <td><input type="text" class="input-create0 input-create" id="txtCode" fieldName="debitMoney" /></td>
                     <td class="lbl">Hạng thẻ</td>
 
                     <td>
@@ -242,30 +242,30 @@
                 </tr>
                 <tr>
                     <td class="lbl">Số điện thoại</td>
-                    <td><input type="text" class="input-create0 input-create" id="txtMobile" fieldName="Mobile"/></td>
+                    <td><input type="text" class="input-create0 input-create" id="txtMobile" fieldName="phonNumber"/></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="lbl">Ngày sinh</td>
-                    <td><input type="date" class="input-create0 input-create1" id="txtDate"  fieldName="Datetime"/></td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDate"  fieldName="datetime"/></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="lbl">Tên Công ty</td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create2" id="txtCustomerCompany"  fieldName="CustomerCompany"/></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create2" id="txtCustomerCompany"  fieldName="customerCompany"/></td>
 
                 </tr>
                 <tr>
                     <td class="lbl">Mã số thuế</td>
-                    <td><input type="text" class="input-create0 input-create" id="Code"  fieldName="Code"/></td>
+                    <td><input type="text" class="input-create0 input-create" id="taxCode"  fieldName="Code"/></td>
                     <td class="lbl">Email<span class="note">(*)</span></td>
-                    <td><input type="text" class="input-create0 input-create" id ="txtCustomerEmail" required fieldName="CustomerEmail" typeof="email"/></td>
+                    <td><input type="text" class="input-create0 input-create" id ="txtCustomerEmail" required fieldName="email" typeof="email"/></td>
                 </tr>
                 <tr>
                     <td class="lbl">Địa chỉ</td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create2" id="txtCustomerAddress"  fieldName="CustomerAddress"/></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create2" id="txtCustomerAddress"  fieldName="address"/></td>
 
                 </tr>
                 <tr>

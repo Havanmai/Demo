@@ -7,7 +7,7 @@
 })
 class Base {
     constructor() {
-        debugger;
+        
         this.getData();
         this.loadData();
         this.inintEvent();
@@ -45,10 +45,11 @@ class Base {
      * Edit : load dữ liệu lên bảng*/
 
     loadData() {
-        
+
+        var getUrl = $("#table thead tr").attr('url');
         $.ajax({
 
-            url: "/api/CustomerApi",
+            url: "/api/" + getUrl,
             method: "get",
             data: "",// tham số sẽ truyền qua body request
             contentType: "application/json",// 
@@ -63,7 +64,7 @@ class Base {
             //} 
 
         }).done(function (response) {
-            debugger;
+            
             try {
                 // xoas trong bang truoc khi load du lieu
                 $("#table tbody").empty();
@@ -71,26 +72,26 @@ class Base {
                 var fields = $("#table thead th");
                 var keyId = $('#table tbody tr.row-selected').attr('keyId');
                 //console.log(keyId);
-                debugger;
+                
                 //lấy dữ liệu
                 var data = this.Data;
                 //var employee = data;
                 //đọc dữ liệu ra
                 $.each(response, function (index, obj) {
-                    debugger;
-                    var tr = $(`<tr keyId=` + obj.customerId + `></tr>`);
-                    debugger;
+                   
+                    var tr = $(`<tr keyId=` + obj[keyId] + `></tr>`);
+                    
                     $.each(fields, function (index, field) {
                         // binding du liệu
                         //TODO: them 1 truong chung voi ca thuoc tinh chung cua cac doi tuong de rut gon va tranh code xau
                         var fieldName = $(field).attr('fieldName');
                         var value = obj[fieldName];
 
-                        if (fieldName == "postedDate" ) {
+                        if (fieldName == "postedDate" || fieldName=="dateOfBirth") {
                             var td = $(`<td align="center" >` + CommonJs.formatDate(value) + `</td>`);
-                        } else if (fieldName == "debitAmount") {
+                        } else if (fieldName == "debitAmount" || fieldName =="salary") {
                             var td = $(`<td align="right">` + CommonJs.fomartMoney(value) + `</td>`);
-                        } else if (fieldName == "phoneNumber" || fieldName == "taxCode") {
+                        } else if (fieldName == "phoneNumber" ) {
                             var td = $(`<td align="center">` + value + `</td>`);
                         }
                         else if (fieldName == "email") {
@@ -100,12 +101,12 @@ class Base {
                             var td = $(`<td >` + value + `</td>`);
                         }
                         //var td = $(`<td >` + value + `</td>`);
-                        debugger
+                        
                         $(tr).data('keyId', obj[keyId]);
                         $(tr).data('data', obj);
                         $(tr).append(td);
 
-                        debugger;
+                        
                     })
                     $('#table tbody').append(tr);
                 })
@@ -207,7 +208,7 @@ class Base {
                 var fieldName = $(input).attr('fieldName');
                 var value = $(input).val();
                 //console.log(value);
-                debugger;
+                
                 object[fieldName] = value;
               
 
@@ -216,28 +217,29 @@ class Base {
                 
             })
             if (self.FormMode == 'Add') {
-                data.push(object);
+                alert('add');
+                var getUrl = $("#table thead tr").attr('url');
                 alert('add');
                 $.ajax({
-                    url: "",
-                    method: "",
-                    contentType: "application/json",
-                    data: "",
-                    dataType: ""
-                }).done(function () {
-                    debugger;
-                }).fail(function () {
-                    debugger;
+                    method: "POST",
+                    url: "/api/" + getUrl,
+                    data: object,
+                    contentType: "application/json"
+                }).done(function (res) {
+                    
+                    self.loadData();
+                }).fail(function (res) {
+
                 })
             } else {
                 //data.push(object);
-                debugger;
+
                 alert('edit');
             }
             // gọi service thực hiện lưu dữ liệu
             // cat du lieu
             
-            debugger;
+            
             // load lai du lieu dong thoi tat dialog modal
             self.loadData();
             self.btnCloseOnClick();
@@ -257,9 +259,14 @@ class Base {
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
         // lay du lieu thong tin cua danh sachs
+        
+        //var object = recordSelected.data('data');
+        //var id = object['employeeId'];
+        //console.log(id);
+        //var id = recordSelected.data('keyId');
+        //var objectDetail = recordSelected.data('data');
         debugger;
-        var id = recordSelected.attr('keyId');
-        console.log(id);
+        //console.log(id);
         var objectDetail = recordSelected.data('data');
       
        
@@ -272,12 +279,22 @@ class Base {
             $.each(inputs, function (index, input) {
 
                 var fieldName = $(input).attr('fieldName');
-                input.value = objectDetail[fieldName];
-                if ($(input).attr('type')=='date') {
-                    input.value = CommonJs.formatDate(objectDetail[fieldName]);
+               
+                //if ($(input).attr('type')=='date') {
+                //    input.value = CommonJs.formatDate(objectDetail[fieldName]);
+                    
+                //}
+                console.log(objectDetail["dateOfBirth"]);
+                if (fieldName == "postedDate" || fieldName == "dateOfBirth") {
+                    input.value = CommonJs.formatDatel(objectDetail[fieldName]);
                     debugger;
+                } else if (fieldName == "debitAmount" || fieldName == "salary") {
+                    input.value = CommonJs.fomartMoney(objectDetail[fieldName]);
                 }
-                debugger;
+                else {
+                    input.value = objectDetail[fieldName];
+                }
+                
             })
         
 
@@ -292,7 +309,7 @@ class Base {
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
         // lay du lieu thong tin cua danh sachs
-        debugger;
+        
         var id = recordSelected.attr('keyId');
         console.log(id);
         
@@ -301,7 +318,7 @@ class Base {
 
         //thuc hien xoa khi nhan oke
         if (result) {
-            debugger;
+            
             data.pop();
 
         }
@@ -376,20 +393,20 @@ class Base {
      * author: HVM 29/09/2020
      * edit: dữ liệu ảo  với 100 bản ghis*/
 var data = [];
-for (var i = 0; i < 100; i++) {
-    var employee = {
-        EmployeeCode: "KH00" + i + 1,
-        EmployeeName: "Linh Trang Nguyen",
-        Gender: "Nữ",
-        DateOfBirth: "29/08/1998",
-        Mobile: "0123654789",
-        PositionName: "Giám đốc",
-        DepartmentsName: "Phòng đào tạo",
-        Email: "Ninh Binh",
-        Salary: "10000000",
-        WorkStatus: "Đang làm việc",
-    };
-    data.push(employee);
+//for (var i = 0; i < 100; i++) {
+//    var employee = {
+//        EmployeeCode: "KH00" + i + 1,
+//        EmployeeName: "Linh Trang Nguyen",
+//        Gender: "Nữ",
+//        DateOfBirth: "29/08/1998",
+//        Mobile: "0123654789",
+//        PositionName: "Giám đốc",
+//        DepartmentsName: "Phòng đào tạo",
+//        Email: "Ninh Binh",
+//        Salary: "10000000",
+//        WorkStatus: "Đang làm việc",
+//    };
+//    data.push(employee);
 
-}
+//}
 

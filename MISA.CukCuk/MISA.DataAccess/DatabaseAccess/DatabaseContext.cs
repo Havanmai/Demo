@@ -79,14 +79,14 @@ namespace MISA.DataAccess.DatabaseAccess
         /// <returns>trả về danh sách các bản ghi</returns>
         public IEnumerable<T> Get()
         {
-            var employees = new List<T>();
+            var entities = new List<T>();
             var className = typeof(T).Name;
             _sqlCommand.CommandText = $"Proc_Get{className}";
             // Thực hiện đọc dữ liệu:
             MySqlDataReader mySqlDataReader = _sqlCommand.ExecuteReader();
             while (mySqlDataReader.Read())
             {
-                var employee = Activator.CreateInstance<T>();
+                var entity = Activator.CreateInstance<T>();
                 //employee.EmployeeId = mySqlDataReader.GetGuid(0);
                 //employee.EmployeeCode = mySqlDataReader.GetString(1);
                 //employee.FullName = mySqlDataReader.GetString(2);
@@ -95,16 +95,16 @@ namespace MISA.DataAccess.DatabaseAccess
                 {
                     var columnName = mySqlDataReader.GetName(i);
                     var value = mySqlDataReader.GetValue(i);
-                    var propertyInfo = employee.GetType().GetProperty(columnName);
+                    var propertyInfo = entity.GetType().GetProperty(columnName);
                     if (propertyInfo != null && value != DBNull.Value)
-                        propertyInfo.SetValue(employee, value);
+                        propertyInfo.SetValue(entity, value);
                 }
-                employees.Add(employee);
+                entities.Add(entity);
             }
             // 1. Kết nối với Database:
             // 2. Thực thi command lấy dữ liệu:
             // Trả về:
-            return employees;
+            return entities;
         }
         /// <summary>
         /// 
