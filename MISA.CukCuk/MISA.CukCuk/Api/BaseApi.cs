@@ -68,8 +68,13 @@ namespace MISA.CukCuk.Api
 
         // DELETE api/<BaseApi>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete([FromRoute] Guid id)
         {
+            var affectRows = _baseService.Delete(id);
+            if (affectRows > 0)
+                return Ok(affectRows);
+            else
+                return NoContent();
         }
     }
 }

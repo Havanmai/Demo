@@ -82,9 +82,7 @@
                             var td = $(`<td align="center" >` + CommonJs.formatDate(value) + `</td>`);
                         } else if (fieldName == "debitAmount" || fieldName == "salary") {
                             var td = $(`<td align="right">` + CommonJs.fomartMoney(value) + `</td>`);
-                        } else if (fieldName == "phoneNumber") {
-                            var td = $(`<td align="center">` + value + `</td>`);
-                        }
+                        } 
                         else if (fieldName == "email") {
                             var td = $(`<td  title="` + value + `">` + CommonJs.title(value) + `</td>`);
                         }
@@ -356,11 +354,12 @@
      * */
     btnDeleteOnClick() {
         // lay thong tin ban ghi da chon trong danh sach
+        var self = this;
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
         // lay du lieu thong tin cua danh sachs
 
-        var id = recordSelected.attr('keyId');
+        var id = recordSelected.data('key');
         console.log(id);
 
         // hien thi thong tin xoa
@@ -369,7 +368,8 @@
         //thuc hien xoa khi nhan oke
         if (result) {
 
-            data.pop();
+            self.DeleteId(id);
+            
 
         }
 

@@ -213,8 +213,8 @@ namespace MISA.DataAccess.DatabaseAccess
                 var paramName = param.ParameterName.Replace("@", string.Empty);
                 var property = entity.GetType().GetProperty(paramName);
                 //var property = entity.GetType().GetProperty(paramName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                if (property.Name == "customerId")
-                    param.Value = Guid.Parse((string)property.GetValue(entity));
+                //if (property.Name == "customerId")
+                //    param.Value = Guid.Parse((string)property.GetValue(entity));
                 if (property != null)
                     param.Value = property.GetValue(entity);
             }
