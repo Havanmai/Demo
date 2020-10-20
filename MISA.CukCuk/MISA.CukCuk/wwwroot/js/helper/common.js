@@ -19,42 +19,36 @@
       *  Author: HVM 29/09/2020
       */
      formatDate(date) {
-<<<<<<< HEAD
-         //date2 = new Date(date)
-         var part1 = date.substr(0,10);
-=======
-         // //date2 = new Date(date)
          var part1 = date.substr(0, 10);
->>>>>>> a4928baad152aaa9a86070d8d3381f1504ecdf3c
+
          var parts = part1.split('-');
         // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
         // January - 0, February - 1, etc.
          var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
          return mydate.toLocaleDateString();
-
-<<<<<<< HEAD
-
-        
      },
      /*
        * Ham format ngay
       * @param {date} _date
       *  Author: HVM 29/09/2020
       */
+
+     formatddMMyyyypro(datetimes) {
+         var day = datetimes.getDate();
+         var month = datetimes.getMonth();
+         var year = datetimes.getFullYear();
+         return day + '-' + month + '-' + year;
+     },
+
+
      formatDatel(date) {
          //date2 = new Date(date)
-         var part1 = date.slice(0, 10).split('-').reverse().join("/");
+         var part1 = date.slice(0, 10); 
          // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
          // January - 0, February - 1, etc.
          //var mydate = new Date(parts[1] - 1, parts[0], parts[2]);
          //return mydate.toLocaleDateString();
          return part1;
-=======
-        
->>>>>>> a4928baad152aaa9a86070d8d3381f1504ecdf3c
-
-
-
      },
    
 

@@ -143,7 +143,7 @@
                                     <th fieldName="departmentName">Phòng ban </th>
                                     <th fieldName="email">Email</th>
                                     <th fieldName="salary">Mức lương </th>
-                                    <th fieldName="workStatus">Tình trạng công việc</th>
+                                    <th fieldName="workStatusName">Tình trạng công việc</th>
 
                                 </tr>
                                 <!--<tr>
@@ -217,7 +217,7 @@
                 <tr style="margin-top:5px;">
 
                     <td class="lbl">Mã nhân viên<span class="note">(*)</span></td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create" id="txtCustomerCode" fieldName="employeeCode" required/></td>
+                    <td colspan="3"><input autofocus type="text" class="input-create0 input-create" id="txtEmployeeCode" fieldName="employeeCode" required /></td>
                     <td rowspan="6">
                         <div class="avatar-box">
                             <div style="height:0;overflow:hidden">
@@ -245,16 +245,17 @@
                     <td><input type="date" class="input-create0 input-create1" id="txtDateBorn"  style="width:154px;" fieldName="dateOfBirth" /></td>
                     <td class="lbl"> Giới tính</td>
                     <td>
-                        <select fieldName="genderName" >
-                            <option id="male" name="gender" value="male" style="height:26px;">Nam</option>
-                            <option id="female" name="gender" value="female" style="height:26px;">Nữ</option>
+                        <select fieldName="gender">
+                            <option id="male" name="gender" value="1" style="height:26px;">Nam</option>
+                            <option id="female" name="gender" value="0" style="height:26px;">Nữ</option>
+                            <option id="other" name="gender" value="2" style="height:26px;">Khác</option>
                         </select>
                         
                     </td>
                 </tr>
                 <tr>
                     <td class="lbl">Email<span class="note">(*)</span></td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create" required fieldName="email"/></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" required fieldName="email"  /></td>
                 </tr>
                 <tr>
                     <td class="lbl">ĐT Di động<span class="note">(*)</span></td>
@@ -263,13 +264,13 @@
                 </tr>
                 <tr>
                     <td class="lbl">Số CMT/HC</td>
-                    <td><input type="text" class="input-create0 input-create"  style="width:151px;"  fieldName="taxCode"/></td>
+                    <td><input type="text" class="input-create0 input-create"  style="width:151px;"  fieldName="indentityNumber"/></td>
                     <td class="lbl">Ngày cấp</td>
-                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;height:23px;" fieldName="phoneNumber"/></td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;height:23px;" fieldName="indentityDate"/></td>
                 </tr>
                 <tr>
                     <td class="lbl">Nơi cấp CMT</td>
-                    <td colspan="4"><input type="text" class="input-create0 input-create" style="width:98.6%;" fieldName="address" /></td>
+                    <td colspan="4"><input type="text" class="input-create0 input-create" style="width:98.6%;" fieldName="indentityPlace" /></td>
                 </tr>
 
 
@@ -279,19 +280,17 @@
                 <tr>
                     <td class="lbl" style="margin-top:15px !important;">Vị trí</td>
                     <td colspan="4">
-                        <select fieldName="positionName">
-                            <option style="height:26px;">nhom 1</option>
-                            <option style="height:26px;">nhom 2</option>
-                        </select >
+                        <select fieldName="positionId" class="inputSelected" id="positionName" name="positionName">
+                            <option value="s">Select</option>
+                        </select>
                     </td>
 
                 </tr>
                 <tr>
                     <td class="lbl">Phòng ban</td>
-                    <td colspan="4" >
-                        <select fieldName="departmentName"  >
-                            <option  style="height:26px;">nhom 1</option>
-                            <option  style="height:26px;">nhom 2</option>
+                    <td colspan="4">
+                        <select fieldName="departmentId" class="inputSelected" id="departmentName" name="departmentName">
+                            <option value="s">Select</option>
                         </select>
                     </td>
                 </tr>
@@ -304,12 +303,13 @@
                 </tr>
                 <tr>
                     <td class="lbl">Ngày gia nhập</td>
-                    <td><input type="date" class="input-create0 input-create2" id="txtDateBorn" style="width:154px;"/></td>
+                    <td><input type="date" class="input-create0 input-create2" id="txtDateBorn" style="width:154px;" fieldname="joinDate"/></td>
                     <td class="lbl">Tình trạng</td>
                     <td colspan="2" >
-                        <select>
-                            <option style="height:26px;">nhom 1</option>
-                            <option style="height:26px;">nhom 2</option>
+                        <select fieldName="workStatus">
+                            <option style="height:26px;" value="0">Đã nghỉ</option>
+                            <option style="height:26px;" value="1">Đang làm việc</option>
+                            <option style="height:26px;" value="2">Đang thử việc</option>
                         </select>
                     </td>
                 </tr>

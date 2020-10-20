@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static MISA.Common.Models.Enumeration;
+using System.Resources;
+using MISA.Common.Properties;
 
 namespace MISA.Common.Models
 {
@@ -36,13 +39,35 @@ namespace MISA.Common.Models
         public string PhoneNumber { get; set; } 
         public DateTime  IndentityDate { get; set; }
         public string IndentityPlace { get; set; }
+        public string IndentityNumber { get; set; }
+        public string TaxCode { get; set; }
         public Guid PositionId { get; set; }
         public Guid DepartmentId { get; set; }
         public string PositionName { get; set; }
         public string DepartmentName { get; set; }
         public double Salary { get; set; }
         public DateTime JoinDate { get; set; }
-        public int WorkStatus { get; set; }
+        public int? WorkStatus { get; set; }
+        public string WorkStatusName
+        {
+            get
+            {
+                if (WorkStatus == null)
+                    return string.Empty;
+                switch ((WorkStatus)WorkStatus)
+                {
+
+                    case Enumeration.WorkStatus.Stopped:
+                        return ResourceVN.Enum_WorkStatus_Stopped;
+                    case Enumeration.WorkStatus.Working:
+                        return ResourceVN.Enum_WorkStatus_Working;
+                    case Enumeration.WorkStatus.Waiting:
+                        return ResourceVN.Enum_WorkStatus_Waitiing;
+                    default:
+                        return string.Empty;
+                }
+            }
+        }
         public DateTime CreateDate { get; set; }
         public string CreateBy { get; set; }
         public DateTime  ModifiedDay { get; set; }
