@@ -469,18 +469,9 @@
         self.getDetailDataId(self.selectId);
         var objectDetail = self.object;
         console.log(objectDetail);
-        $.ajax({
-            url: "/api/employees/GetbyCode",
-            method: "GET",
-            async: false
-        }).done(function (response) {
-            var code = $("#modal tr td input[fieldname='employeeCode']").val(`NV${CommonJs.getItemCodeNumberIncrea(response)}`);
-            objectDetail.employeeCode = `NV${CommonJs.getItemCodeNumberIncrea(response)}`;
-            objectDetail.employeeId = "00000000-0000-0000-0000-000000000000";
-            console.log("ssssSS", objectDetail)
-        }).fail(response => {
-            console.log(response)
-        })
+        self.getByCode();
+        objectDetail.employeeCode = self.employeeCode;
+        objectDetail.employeeId = self.employeeId;
 
 
         var getUrl = $("#table thead tr").attr('url');

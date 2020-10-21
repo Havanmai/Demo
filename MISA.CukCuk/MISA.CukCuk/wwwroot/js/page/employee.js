@@ -40,6 +40,26 @@ class Employee extends Base {
         })
     }
     /**
+     * 
+     * 
+     * 
+     * */
+    getByCode() {
+        var self = this;
+        $.ajax({
+            url: "/api/employees/GetbyCode",
+            method: "GET",
+            async: false
+        }).done(function (response) {
+            var code = $("#modal tr td input[fieldname='employeeCode']").val(`NV${CommonJs.getItemCodeNumberIncrea(response)}`);
+            self.employeeCode = `NV${CommonJs.getItemCodeNumberIncrea(response)}`;
+            self.employeeId = "00000000-0000-0000-0000-000000000000";
+            
+        }).fail(response => {
+            console.log(response)
+        })
+    }
+    /**
      * ham xoa du lieuj theo id
      * author: HVM
      * date:21/10/2020
