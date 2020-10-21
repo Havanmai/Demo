@@ -86,6 +86,11 @@
      title(column) {
          return column.slice(0, 5) + `...`;
      },
+     getItemCodeNumberIncrea: (itemCode) => {
+         var itemCodeIncrea = ++itemCode.match(/\d+/g).map(Number)[0];
+         var result = ("0000000" + itemCodeIncrea).slice(-7);
+         return result;
+     }
      
 }
 Number.prototype.formatMoney = function () {

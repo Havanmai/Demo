@@ -22,6 +22,11 @@ namespace MISA.DataAccess.Repository
             return _databaseContext.Get();
         }
 
+        public string GetbyCode()
+        {
+            return _databaseContext.GetbyCode();
+        }
+
         public T GetById(Guid objectId)
         {
             return _databaseContext.GetById(objectId);

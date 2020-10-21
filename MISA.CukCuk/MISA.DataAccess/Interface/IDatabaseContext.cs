@@ -14,5 +14,6 @@ namespace MISA.DataAccess.Interface
         int DeleteId(object id);
         IEnumerable<T> Get(string storeName);
         object Get(string storeName, string code);
+        string GetbyCode();
     }
 }

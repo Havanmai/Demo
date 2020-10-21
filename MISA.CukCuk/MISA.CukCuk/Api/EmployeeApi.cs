@@ -20,6 +20,7 @@ namespace MISA.CukCuk.Api
        public EmployeeApi(IBaseService<Employee> employeeService) : base(employeeService)
         {
 
+
         }
 
     }

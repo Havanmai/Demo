@@ -56,5 +56,11 @@ namespace MISA.Business.Service
         {
             return true;
         }
+
+        public string GetbyCode()
+        {
+            return  _baseRepository.GetbyCode();
+           
+        }
     }
 }

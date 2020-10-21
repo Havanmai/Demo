@@ -34,6 +34,25 @@
     getData() {
         this.Data = [];
     }
+    getDataCode() {
+        var sefl = this;
+        $.ajax({
+            url: "/api/employees/GetbyCode",
+            method: "get",
+            data: "",
+            contentType: "application/json", 
+            dataType: "",
+            async: false
+            
+
+        }).done(function (response) {
+            console.log(response);
+            self.entitycode = response;
+        })
+            .fail(function (response) {
+            })
+
+    }
 
     //#region Loaddulieu
     /**
@@ -171,7 +190,16 @@
      Edit: Hien modal*/
     btnAddOnClick() {
         var self = this;
-
+        var getUrl = $("#table thead tr").attr('url');
+        $.ajax({
+            url: "/api/employees/GetbyCode",
+            method: "GET"
+        }).done(function (response) {
+            debugger;
+            $("#modal tr td input[fieldname='employeeCode']").val(`NV${CommonJs.getItemCodeNumberIncrea(response)}`)
+        }).fail(response => {
+            console.log(response)
+        })
         self.showDetailModal();
         self.FormMode = "Add";
         $(self).focus;
@@ -235,6 +263,12 @@
             if (IsValid && valid.hasClass('required-error')) {
 
                 IsValid = false;
+                self.showWarning($("#modal tr td input[required]"), "Hãy điền đầy đủ không để trống");
+                $("#btnOke").click(function () {
+                    $("#dialog-validate").hide();
+                    
+
+                });
             }
             else {
 
@@ -280,13 +314,23 @@
                     contentType: "application/json",
                     dataType: "json"
                 }).done(function (res) {
-                   
-                    alert("Thêm thành công");
-                    self.loadData();
-                    self.btnCloseOnClick();
-                }).fail(function (res) {
-
+                    if (response == 0) {
+                        self.showWarning($("#modal tr td input[required]"), "Mã nhân viên đã tồn tại");
+                    }
+                    else {
+                        alert("Thêm thành công");
+                        self.loadData();
+                        self.Refreshform();
+                        self.btnCloseOnClick();
+                    }
                 })
+                    .fail((response) => {
+                        self.showWarning($("#modal tr td input[required]"), response.responseJSON.message)
+                        console.log('fail');
+                    })
+                   
+                    
+               
             } else if (self.FormMode == 'Edit') {
                 self.selectId = $('#table tbody tr.row-selected').data('key');
                 
@@ -301,6 +345,7 @@
 
                     alert("Sửa thành công");
                     self.loadData(res);
+                    self.Refreshform();
                     self.btnCloseOnClick();
                    
                 }).fail(function (res) {
@@ -320,6 +365,7 @@
     btnChangeOnClick() {
        
         var self = this;
+        console.log(self);
         self.FormMode = "Edit";
         // lay thong tin ban ghi da chon trong danh sach
         var recordSelected = $('#table tbody tr.row-selected');
@@ -394,9 +440,9 @@
         this.loadData();
 
     }
-    /**
-     * 
-     * 
+    /**ham cho nut nhan ban du lieu
+     * author: HVM 05/10/2020
+     * edit:chi tiet nut xoa thong tin trong bang content
      * */
     btnMutilOnClick() {
         var self = this;
@@ -408,15 +454,31 @@
         // building du lieu can luu
         self.getDetailDataId(self.selectId);
         var objectDetail = self.object;
+        console.log(objectDetail);
+        $.ajax({
+            url: "/api/employees/GetbyCode",
+            method: "GET",
+            async: false
+        }).done(function (response) {
+            
+            var code = $("#modal tr td input[fieldname='employeeCode']").val(`NV${CommonJs.getItemCodeNumberIncrea(response)}`);
+            objectDetail.employeeCode = `NV${CommonJs.getItemCodeNumberIncrea(response)}`;
+            objectDetail.employeeId = "00000000-0000-0000-0000-000000000000";
+            console.log("ssssSS", objectDetail)
+        }).fail(response => {
+            console.log(response)
+        })
+
+
         var getUrl = $("#table thead tr").attr('url');
         //alert('add');
         $.ajax({
-
             url: "/api/" + getUrl,
             method: "POST",
             data: JSON.stringify(objectDetail),
             contentType: "application/json",
-            dataType: "json"
+            dataType: "json",
+            async: false
         }).done(function (res) {
 
             alert("Nhân bản thành công");
@@ -481,8 +543,20 @@
     /**load lai du lieu
      * author: HVM 29/09/2020
      * edit: load du lieu nut nap*/
-   
-   
+    showWarning(item, content) {
+        $("#dialog-validate #bodydaialog .notice-text").html(content)
+        this.focusInput = item;
+        $("#dialog-validate").show();
+        setTimeout(() => $("#dialog-validate #btnOke").focus(), 0)
+        item.focus();
+    }
+    /*
+     
+     
+     */
+    Refreshform() {
+        $("#modal tr td [fieldname]").val('');
+    }
     //#endregion
 }
 

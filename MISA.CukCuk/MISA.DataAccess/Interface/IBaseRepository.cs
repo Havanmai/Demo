@@ -16,5 +16,6 @@ namespace MISA.DataAccess.Interface
         int Insert(T entity);
         int Update(T entity, Guid id);
         int Delete(Guid id);
+        string GetbyCode();
     }
 }

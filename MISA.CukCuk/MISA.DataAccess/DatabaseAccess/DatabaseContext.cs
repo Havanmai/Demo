@@ -152,6 +152,21 @@ namespace MISA.DataAccess.DatabaseAccess
             return default;
         }
         /// <summary>
+        /// lấy ra code lớn nhất
+        /// </summary>
+        /// <returns></returns>
+        public string GetbyCode()
+        {
+           
+            var className = typeof(T).Name;
+            _sqlCommand.CommandText = $"Proc_Get{className}CodeEnd";
+            // thực hiện đọc dữ liệu
+            var scalar = _sqlCommand.ExecuteScalar();
+                return scalar.ToString();
+
+            }
+            
+        /// <summary>
         /// Them mơi 1 bản ghi
         /// </summary>
         /// <param name="entity"></param>
@@ -251,6 +266,8 @@ namespace MISA.DataAccess.DatabaseAccess
         {
             _sqlConnection.Close();
         }
+
+       
     }
 
     

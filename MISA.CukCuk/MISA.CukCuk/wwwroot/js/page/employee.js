@@ -34,6 +34,7 @@ class Employee extends Base {
 
         }).done(function (response) {
             self.object = response;
+            
         }).fail(function (response) {
 
         })

@@ -76,5 +76,20 @@ namespace MISA.CukCuk.Api
             else
                 return NoContent();
         }
+        
+        [Route("GetbyCode")]
+        [HttpGet]
+        public IActionResult GetbyCode()
+        {
+            var entitycode = _baseService.GetbyCode();
+            if(entitycode != null)
+            {
+                return Ok(entitycode);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
     }
 }

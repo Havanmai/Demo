@@ -31,12 +31,12 @@ namespace MISA.Business.Service
             }
 
             // Check trùng số chứng minh thư:
-            var isValidExitsMobile = CheckEmployeeByCode(entity.PhoneNumber);
-            if (isValidExitsMobile)
-            {
-                isValid = false;
-                validateErrorResponseMsg.Add("Bị trùng số điện thoại");
-            }
+            //var isValidExitsMobile = CheckEmployeeByCode(entity.PhoneNumber);
+            //if (isValidExitsMobile)
+            //{
+            //    isValid = false;
+            //    validateErrorResponseMsg.Add("Bị trùng số điện thoại");
+            //}
 
             return isValid;
         }
