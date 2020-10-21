@@ -23,7 +23,7 @@
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('input[required]').blur(this.checkRequired);
         $('input[typeof]').blur(this.checkTypeOf);
-
+        //$('#txtSalary').on('blur, focus, keyup', this.formatMoneyKeyup);
     }
 
 
@@ -294,6 +294,7 @@
                 
 
                 if (fieldName == 'salary') {
+
                     var value = parseFloat($(input).val());
                 }
                 else if (fieldName == 'workStatus') {
@@ -319,31 +320,37 @@
                     data: JSON.stringify(object),
                     contentType: "application/json",
                     dataType: "json"
-                }).done(function (res) {
-                    if (response == 0) {
-                        self.showWarning($("#modal tr td input[required]"), "Mã nhân viên đã tồn tại");
-                        $("#modal tr td input[required]").focus();
-                    }
-                    else {
+                }).done(function (response) {
+                    //if (response == 0) {
+                    //    self.showWarning($("#modal tr td input[required]"), "Mã nhân viên đã tồn tại");
+                    //    $("#btnOke").click(function () {
+                    //        $("#dialog-validate").hide();
+                    //        $("#modal tr td input[required]").focus();
+                    //    })
+                    //}
+                    //else {
                         alert("Thêm thành công");
                         self.loadData();
-                       
+
                         self.btnCloseOnClick();
-                    }
-                })
-                    .fail((response) => {
-                        self.showWarning($("#modal tr td input[required]"), response.responseJSON.message)
-                        console.log('fail');
+                    //}
+                        
+                    
+                }).fail(function(response)  {
+                        self.showWarning($("#modal tr td input[required]"), "Lỗi");
+                        $("#btnOke").click(function () {
+                            $("#dialog-validate").hide();
+                        $("#modal tr td input[required]").focus();
                     })
-                   
+                    })
                     
                
             } else if (self.FormMode == 'Edit') {
                 self.selectId = $('#table tbody tr.row-selected').data('key');
-                
+                var getUrl = $("#table thead tr").attr('url');
                 $.ajax({
 
-                    url: "/api/employees/" + self.selectId,
+                    url: "/api/" + getUrl + "/" + self.selectId,
                     method: "PUT",
                     data: JSON.stringify(object),
                     contentType: "application/json",
@@ -418,25 +425,25 @@
      * */
     btnDeleteOnClick() {
         // lay thong tin ban ghi da chon trong danh sach
-        $('#dialog-validate').show();
+        //$('#dialog-validate').show();
         var self = this;
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
         // lay du lieu thong tin cua danh sachs
 
-        var id = recordSelected.data('key');
-        console.log(id);
-
-        // hien thi thong tin xoa
-        var result = confirm('ban co muon xoa khong?');
-
-        //thuc hien xoa khi nhan oke
-        if (result) {
-
-            self.DeleteId(id);
+        self.selectId = recordSelected.data('key');
+        
+        self.getDetailDataId(self.selectId);
+        var objectDetail = self.object;
+        self.showDelete("Bạn có chắc chắn muốn xóa nhân viên" + " " + objectDetail.employeeCode + " " + "không?");
+        $('#btnOke1').click(function () {
+            self.DeleteId(self.selectId);
+            $("#dialogDelete").hide();
+        })
+        $('#btnHuy').click(function () {
+            $("#dialogDelete").hide();
             
-
-        }
+        })
 
     }
     /** ham cho nut nap lai du lieu
@@ -467,7 +474,6 @@
             method: "GET",
             async: false
         }).done(function (response) {
-            
             var code = $("#modal tr td input[fieldname='employeeCode']").val(`NV${CommonJs.getItemCodeNumberIncrea(response)}`);
             objectDetail.employeeCode = `NV${CommonJs.getItemCodeNumberIncrea(response)}`;
             objectDetail.employeeId = "00000000-0000-0000-0000-000000000000";
@@ -495,6 +501,7 @@
 
         })
     }
+    
     //#endregion
 
 
@@ -519,6 +526,16 @@
         }
 
     }
+    /**
+     * ham dinh dang tien te khi nhap
+     * author: HVM 05/10/2020
+     * edit: khi nhap luong vao trong input se tu dong dinh dang tiền tệ
+     * */
+    formatMoneyKeyup() {
+        var value = parseInt(this.value.replaceAll('.',''));
+        this.value = value.formatMoney();
+    }
+
     /**
     * kiem tra du lieu truong email
     * author: HVM 05/10/2020
@@ -547,16 +564,24 @@
         $(this).addClass('row-selected');
     }
 
-    /**load lai du lieu
+
+    /**show canh baos loi
      * author: HVM 29/09/2020
-     * edit: load du lieu nut nap*/
+     * edit: show canh baos loi*/
     showWarning(item, content) {
         $("#dialog-validate #bodydaialog .notice-text").html(content)
         this.focusInput = item;
         $("#dialog-validate").show();
-        setTimeout(() => $("#dialog-validate #btnOke").focus(), 0);
-        item.focus();
     }
+    /**show canh baos xoa
+     * author: HVM 29/09/2020
+     * edit: show canh baos xoa*/
+    showDelete( content) {
+        $("#dialogDelete .bodydaialog .notice-text1").html(content)
+       
+        $("#dialogDelete").show();
+    }
+
     /*
      
      

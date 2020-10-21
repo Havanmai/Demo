@@ -30,14 +30,6 @@ namespace MISA.Business.Service
                 validateErrorResponseMsg.Add("Mã bị trùng 1");
             }
 
-            // Check trùng số chứng minh thư:
-            //var isValidExitsMobile = CheckEmployeeByCode(entity.PhoneNumber);
-            //if (isValidExitsMobile)
-            //{
-            //    isValid = false;
-            //    validateErrorResponseMsg.Add("Bị trùng số điện thoại");
-            //}
-
             return isValid;
         }
     }

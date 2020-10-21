@@ -22,6 +22,8 @@ namespace MISA.DataAccess.Repository
             return _databaseContext.Get();
         }
 
+        
+
         public string GetbyCode()
         {
             return _databaseContext.GetbyCode();

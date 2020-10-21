@@ -94,6 +94,7 @@
      }
      
 }
+
 Number.prototype.formatMoney = function () {
-    return this.ToString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return this.toString().replace(/(.)(?=(\d{3})+$)/g, '$1.');
 }
