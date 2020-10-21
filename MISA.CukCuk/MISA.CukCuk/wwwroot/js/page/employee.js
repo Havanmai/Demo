@@ -3,7 +3,7 @@
 
     var employee = new Employee();
     //customer.loadData();
-
+   
 
 })
 class Employee extends Base {
@@ -14,6 +14,13 @@ class Employee extends Base {
     getData() {
         this.Data = data;
     }
+    /**
+     * ham lay du lieuj theo id
+     * author: HVM
+     * date:21/10/2020
+     * @param {any} employeeId
+     */
+
     getDetailDataId(employeeId) {
         var self = this;
         $.ajax({
@@ -31,6 +38,12 @@ class Employee extends Base {
 
         })
     }
+    /**
+     * ham xoa du lieuj theo id
+     * author: HVM
+     * date:21/10/2020
+     * @param {any} employeeId
+     */
     DeleteId(employeeId) {
         var self = this;
         $.ajax({
@@ -49,4 +62,6 @@ class Employee extends Base {
 
         })
     }
+   
+
 }

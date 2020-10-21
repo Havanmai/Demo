@@ -59,7 +59,7 @@ namespace MISA.CukCuk.Api
         
         {
            
-            var affectRows = _baseService.Update(entity);
+            var affectRows = _baseService.Update(entity,id);
             if (affectRows > 0)
                 return Ok(affectRows);
             else

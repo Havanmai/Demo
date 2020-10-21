@@ -7,6 +7,8 @@
     <link href="../../css/layout/sidebar.css" rel="stylesheet" />
     <link href="../../css/page/category/employee.css" rel="stylesheet" />
     <link href="../../css/element/table.css" rel="stylesheet" />
+    
+   
 </head>
 <body>
     <div id="mainfull">
@@ -131,7 +133,7 @@
                         <button><span class="icon bicon8"></span>Giúp</button>
                     </div>
                     <div class="content2">
-                        <table id="table" keyId="employeeId"> 
+                        <table id="table" keyId="employeeId">
                             <thead>
                                 <tr url="employees">
                                     <th fieldName="employeeCode"> Mã Nhân Viên</th>
@@ -160,9 +162,6 @@
                                 </tr>-->
                             </thead>
                             <tbody>
-                               
-                                
-
                             </tbody>
                         </table>
                     </div>
@@ -204,7 +203,7 @@
     <div class="modal"></div>
     <div class="modal-content">
         <div class="modal-header">
-            <b >Thông tin nhân viên</b>
+            <b>Thông tin nhân viên</b>
             <b class="close">&times;</b>
         </div>
         <div class="modal-body">
@@ -221,11 +220,11 @@
                     <td rowspan="6">
                         <div class="avatar-box">
                             <div style="height:0;overflow:hidden">
-                                <form action="/" method="post" enctype="multipart/form-data" >
+                                <form action="/" method="post" enctype="multipart/form-data">
                                     <input type="file" id="fileInput" name="" value="" />
                                 </form>
                             </div>
-                            <button class=" btn-select-avatar" >...</button>
+                            <button class=" btn-select-avatar">...</button>
                             <button class=" btn-remove-avatar " disabled></button>
                         </div>
                         <div class="tip-upload">
@@ -238,11 +237,11 @@
                 </tr>
                 <tr>
                     <td class="lbl">Tên nhân viên<span class="note">(*)</span></td>
-                    <td colspan="3" ><input type="text" class="input-create0 input-create" id="txtEmployeeName" fieldName="employeeName" required/></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" id="txtEmployeeName" fieldName="employeeName" required /></td>
                 </tr>
                 <tr>
                     <td class="lbl">Ngày sinh</td>
-                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn"  style="width:154px;" fieldName="dateOfBirth" /></td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;" fieldName="dateOfBirth" /></td>
                     <td class="lbl"> Giới tính</td>
                     <td>
                         <select fieldName="gender">
@@ -250,23 +249,23 @@
                             <option id="female" name="gender" value="0" style="height:26px;">Nữ</option>
                             <option id="other" name="gender" value="2" style="height:26px;">Khác</option>
                         </select>
-                        
+
                     </td>
                 </tr>
                 <tr>
                     <td class="lbl">Email<span class="note">(*)</span></td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create" required fieldName="email"  /></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" required fieldName="email"  typeof/></td>
                 </tr>
                 <tr>
                     <td class="lbl">ĐT Di động<span class="note">(*)</span></td>
-                    <td colspan="3"><input type="text" class="input-create0 input-create" id="txtPhoneNumber" fieldName="phoneNumber" required/></td>
+                    <td colspan="3"><input type="text" class="input-create0 input-create" id="txtPhoneNumber" fieldName="phoneNumber" required /></td>
 
                 </tr>
                 <tr>
                     <td class="lbl">Số CMT/HC</td>
-                    <td><input type="text" class="input-create0 input-create"  style="width:151px;"  fieldName="indentityNumber"/></td>
+                    <td><input type="text" class="input-create0 input-create" style="width:151px;" fieldName="indentityNumber" /></td>
                     <td class="lbl">Ngày cấp</td>
-                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;height:23px;" fieldName="indentityDate"/></td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;height:23px;" fieldName="indentityDate" /></td>
                 </tr>
                 <tr>
                     <td class="lbl">Nơi cấp CMT</td>
@@ -296,16 +295,18 @@
                 </tr>
                 <tr>
                     <td class="lbl">Mã số thuế cá nhân</td>
-                    <td><input type="text" class="input-create0 input-create" style="width:151px;"  fieldName="taxCode"/></td>
+                    <td><input type="text" class="input-create0 input-create" style="width:151px;" fieldName="taxCode" /></td>
                     <td class="lbl">Mức lương</td>
-                    <td colspan="2" ><input type="text" class="input-create0 input-create1"  style="text-align:right;position:relative;width:80.7%; padding-right:50px;"  fieldName="salary" >
-                    <span style=" font-style:italic; right:20px;position:absolute; padding-top:5px;"> &nbsp;(VNĐ)</span></td>
+                    <td colspan="2">
+                        <input type="text" class="input-create0 input-create1" style="text-align:right;position:relative;width:80.7%; padding-right:50px;" id="txtSalary" fieldName="salary">
+                        <span style=" font-style:italic; right:20px;position:absolute; padding-top:5px;"> &nbsp;(VNĐ)</span>
+                    </td>
                 </tr>
                 <tr>
                     <td class="lbl">Ngày gia nhập</td>
-                    <td><input type="date" class="input-create0 input-create2" id="txtDateBorn" style="width:154px;" fieldname="joinDate"/></td>
+                    <td><input type="date" class="input-create0 input-create2" id="txtDateBorn" style="width:154px;" fieldname="joinDate" /></td>
                     <td class="lbl">Tình trạng</td>
-                    <td colspan="2" >
+                    <td colspan="2">
                         <select fieldName="workStatus">
                             <option style="height:26px;" value="0">Đã nghỉ</option>
                             <option style="height:26px;" value="1">Đang làm việc</option>
@@ -321,11 +322,21 @@
                 <button id="btnSave"><span class="icon bicon10"></span>Cất</button>
                 <button id="btnSaveAdd"><span class="icon bicon11"></span>Cất & Thêm</button>
                 <button id="btnCancel"><span class="icon bicon12"></span>Hủy bỏ</button>
-                
+
             </div>
             <div class="footer-right">
                 <button><i class="icon bicon9" id="btnHelp"></i>Giúp</button>
             </div>
+        </div>
+    </div>
+    <div id="dialog-validate">
+        <div id="headerdaialog">CUKCUK - Quản lý nhà hàng</div>
+        <div id="bodydaialog">
+            <div class="notice-icon"></div>
+            <div class="notice-text"></div>
+        </div>
+        <div class="footerdaialog">
+            <button id="btnOke" class="notice-dialog">Đồng ý</button>
         </div>
     </div>
 
@@ -333,5 +344,6 @@
     <script src="../../js/helper/base.js"></script>
     <script src="../../js/page/employee.js"></script>
     <script src="../../js/helper/common.js"></script>
+
 </body>
 </html>

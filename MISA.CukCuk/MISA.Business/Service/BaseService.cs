@@ -47,9 +47,9 @@ namespace MISA.Business.Service
             return serviceResponse;
         }
 
-            public int Update(T entity)
+            public int Update(T entity, Guid objectId)
         {
-            var affectRows = _baseRepository.Update(entity);
+            var affectRows = _baseRepository.Update(entity,objectId);
             return affectRows;
         }
         protected virtual bool Validate(T entity)

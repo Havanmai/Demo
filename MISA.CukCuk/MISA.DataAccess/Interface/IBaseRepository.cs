@@ -14,7 +14,7 @@ namespace MISA.DataAccess.Interface
         IEnumerable<T> Get();
         T GetById(Guid objectId);
         int Insert(T entity);
-        int Update(T entity);
+        int Update(T entity, Guid id);
         int Delete(Guid id);
     }
 }

@@ -32,9 +32,9 @@ namespace MISA.DataAccess.Repository
             return _databaseContext.Insert(entity);
         }
 
-        public int Update(T entity)
+        public int Update(T entity, Guid objectId)
         {
-            return _databaseContext.Update(entity);
+            return _databaseContext.Update(entity,objectId);
         }
     }
 }

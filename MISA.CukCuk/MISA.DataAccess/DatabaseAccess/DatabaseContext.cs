@@ -33,41 +33,41 @@ namespace MISA.DataAccess.DatabaseAccess
         /// author: HVM(29/05/2020)
         /// </summary>
         /// <returns></returns>
-        //public IEnumerable<T> Get(string storeName)
-        //{
-        //    // khai báo 1 danh sách khách hàng
-        //    var entities = new List<T>();
+        public IEnumerable<T> Get(string storeName)
+        {
+            var entities = new List<T>();
+            _sqlCommand.CommandText = storeName;
+            // Thực hiện đọc dữ liệu:
+            MySqlDataReader mySqlDataReader = _sqlCommand.ExecuteReader();
+            while (mySqlDataReader.Read())
+            {
+                var entity = Activator.CreateInstance<T>();
 
-        //    //gọi câu lệnh store proceduce
-        //    _sqlCommand.CommandText = storeName;
+                for (int i = 0; i < mySqlDataReader.FieldCount; i++)
+                {
+                    var columnName = mySqlDataReader.GetName(i);
+                    var value = mySqlDataReader.GetValue(i);
+                    var propertyInfo = entity.GetType().GetProperty(columnName);
+                    if (propertyInfo != null && value != DBNull.Value)
+                        propertyInfo.SetValue(entity, value);
+                }
+                entities.Add(entity);
+            }
+            // 1. Kết nối với Database:
+            // 2. Thực thi command lấy dữ liệu:
+            // Trả về:
+            return entities;
+        }
 
-        //    // thực hiện đọc dữ liệu
-        //    MySqlDataReader reader = _sqlCommand.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        var entity = Activator.CreateInstance<T>();
+        public object Get(string storeName, string code)
+        {
+            _sqlCommand.Parameters.Clear();
+            _sqlCommand.CommandText = storeName;
+            _sqlCommand.Parameters.AddWithValue("@EmployeeCode", code);
+            // Thực hiện đọc dữ liệu:
+            return _sqlCommand.ExecuteScalar();
+        }
 
-        //        for (int i = 0; i < reader.FieldCount; i++)
-        //        {
-        //            var columnName = reader.GetName(i);// đọc tên 
-        //            var value = reader.GetValue(i);// đọc giá trị 
-        //            var propertyInfo = entity.GetType().GetProperty(columnName);
-        //            if (propertyInfo != null && value != DBNull.Value)
-        //            {
-        //                propertyInfo.SetValue(entity, value);
-        //            }
-
-        //        }
-
-
-        //        entities.Add(entity);// thêm dữ liệu vừa đọc đc vào danh sách khởi tao trước đó
-
-        //    }
-
-        //    // trả về dữ liệu
-
-        //    return entities;
-        //}
 
 
 
@@ -196,7 +196,7 @@ namespace MISA.DataAccess.DatabaseAccess
         /// <param name="entity">truyền vào 1 đối tượng</param>
         /// <returns> số bản ghi bị cập nhật</returns>
         ///  HVM (17/10/2020)
-        public int Update(T entity)
+        public int Update(T entity,object id)
         {
             // lấy dữ liệu từ database;
             // khởi tạo thông tin kết nối
@@ -204,18 +204,20 @@ namespace MISA.DataAccess.DatabaseAccess
             var entityName = typeof(T).Name;
             //_sqlCommand.Parameters.Clear();
             _sqlCommand.CommandText = $"Proc_Update{entityName}";
-          
+            _sqlCommand.Parameters.AddWithValue($"@{entityName}Id", id);
             MySqlCommandBuilder.DeriveParameters(_sqlCommand);
             var parameters = _sqlCommand.Parameters;
             var properties = typeof(T).GetProperties();
             foreach (MySqlParameter param in parameters)
             {
                 var paramName = param.ParameterName.Replace("@", string.Empty);
+               
                 var property = entity.GetType().GetProperty(paramName);
+
                 //var property = entity.GetType().GetProperty(paramName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                //if (property.Name == "customerId")
-                //    param.Value = Guid.Parse((string)property.GetValue(entity));
-                if (property != null)
+                if (paramName == $"{entityName}Id")
+                    param.Value = id;
+                else if (property != null)
                     param.Value = property.GetValue(entity);
             }
             var affectRows = _sqlCommand.ExecuteNonQuery();

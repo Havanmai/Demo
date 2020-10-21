@@ -13,6 +13,7 @@
     inintEvent() {
 
         $('#btnAdd').click(this.btnAddOnClick.bind(this));
+        $('#btnMutil').click(this.btnMutilOnClick.bind(this));
         $('#btnCancel').click(this.btnCancelOnClick.bind(this));
         $('.close').click(this.btnCloseOnClick.bind(this));
         $('#btnSave').click(this.btnSaveOnClick.bind(this));
@@ -22,6 +23,7 @@
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('input[required]').blur(this.checkRequired);
         $('input[typeof]').blur(this.checkTypeOf);
+
     }
 
 
@@ -32,6 +34,8 @@
     getData() {
         this.Data = [];
     }
+
+    //#region Loaddulieu
     /**
      * Load dữ liệu 
      * Author: HVM 29/09/2020
@@ -40,14 +44,15 @@
     loadData() {
 
         var getUrl = $("#table thead tr").attr('url');
-        console.log(getUrl);
+       
         $.ajax({
 
             url: "/api/" + getUrl,
             method: "get",
             data: "",// tham số sẽ truyền qua body request
             contentType: "application/json",// 
-            dataType: ""
+            dataType: "",
+            async: false,
             // co the dung de check lay đc api chưa
 
             //success: function () {
@@ -106,11 +111,12 @@
         })
 
 
-
-        // lấy dữ liệu thông qua lời gọi từ api
-
-
     }
+        /*
+        *Ham load gia tri phong ban vao select
+        Author: HVM:
+        Edit: Ham load gia tri phong ban vao select
+        */
     loadDataDepartment() {
 
         $.ajax({
@@ -120,14 +126,6 @@
             data: "",// tham số sẽ truyền qua body request
             contentType: "application/json",// 
             dataType: ""
-            // co the dung de check lay đc api chưa
-
-            //success: function () {
-
-            //},
-            //fail: function () {
-
-            //} 
 
         }).done(function (response) {
             $.each(response, function (i, department) {
@@ -138,6 +136,12 @@
 
         })
     }
+    /*
+     *Ham load gia tri vi tri vao select
+     Author: HVM:
+     Edit: Ham load gia tri vi tri vao select
+     */ 
+
     loadDataPosition() {
 
         $.ajax({
@@ -157,6 +161,8 @@
 
         })
     }
+    //#endregion 
+
 
     //#region 'Nut sự kiện'
 
@@ -171,6 +177,7 @@
         $(self).focus;
 
     }
+
     /**tat modal
     Author: HVM:
     Edit: Tat modal*/
@@ -194,11 +201,24 @@
         });
         this.loadDataDepartment();
         this.loadDataPosition();
+       
     }
+    /**tat modal
+    Author: HVM:
+    Edit: Tat modal*/
     hideDetailModal() {
         $('.modal').hide();
         $('.modal-content').hide();
     }
+
+
+
+    /** ham nhan ban ban ghi 
+     * author: HVM 05/10/2020
+     * edit:them moi du lieu ban ghi duoc chonj
+     * */
+
+
     /**save thoong tin ở bản trong modal
     Author: HVM:
     Edit: Tat modal*/
@@ -244,7 +264,7 @@
                     var value = parseFloat($(input).val());
                 }
                 object[fieldName] = value;
-                //debugger;
+                
             })
 
 
@@ -267,34 +287,29 @@
                 }).fail(function (res) {
 
                 })
-            } else {
+            } else if (self.FormMode == 'Edit') {
+                self.selectId = $('#table tbody tr.row-selected').data('key');
+                
+                $.ajax({
 
-                alert('edit');
-                //var getUrl = $("#table thead tr").attr('url');
-                ////alert('add');
-                //$.ajax({
-                //    method: "PUT",
-                //    url: "/api/" + getUrl,
-                //    data: JSON.stringify(object),
-                //    contentType: "application/json",
-                //    dataType: "json"
-                //}).done(function (res) {
-                //    self.loadData();
-                //    self.btnCloseOnClick();
-                //}).fail(function (res) {
+                    url: "/api/employees/" + self.selectId,
+                    method: "PUT",
+                    data: JSON.stringify(object),
+                    contentType: "application/json",
+                    dataType: "json"
+                }).done(function (res) {
 
-                //})
+                    alert("Sửa thành công");
+                    self.loadData(res);
+                    self.btnCloseOnClick();
+                   
+                }).fail(function (res) {
+
+                })    
 
             }
-            // gọi service thực hiện lưu dữ liệu
-            // cat du lieu
-
-           
-            // load lai du lieu dong thoi tat dialog modal
-            
-
         }
-        // thuc hien cat du lieu
+       
 
     }
 
@@ -344,16 +359,13 @@
 
     }
 
-
-
-
-
     /** ham cho nut xoa
      * author: HVM 05/10/2020
      * edit:chi tiet nut xoa thong tin trong bang content
      * */
     btnDeleteOnClick() {
         // lay thong tin ban ghi da chon trong danh sach
+        $('#dialog-validate').show();
         var self = this;
         var recordSelected = $('#table tbody tr.row-selected');
         console.log(recordSelected);
@@ -374,10 +386,55 @@
         }
 
     }
+    /** ham cho nut nap lai du lieu
+     * author: HVM 05/10/2020
+     * edit:chi tiet nut xoa thong tin trong bang content
+     * */
+    btnReloadOnClick() {
+        this.loadData();
+
+    }
+    /**
+     * 
+     * 
+     * */
+    btnMutilOnClick() {
+        var self = this;
+        // lay thong tin ban ghi da chon trong danh sach
+        var recordSelected = $('#table tbody tr.row-selected');
+        //self.selectId = recordSelected.data('data');
+        self.selectId = recordSelected.data('key');
+        // binding du lieu vao input tương ung tren form chi tiet:
+        // building du lieu can luu
+        self.getDetailDataId(self.selectId);
+        var objectDetail = self.object;
+        var getUrl = $("#table thead tr").attr('url');
+        //alert('add');
+        $.ajax({
+
+            url: "/api/" + getUrl,
+            method: "POST",
+            data: JSON.stringify(objectDetail),
+            contentType: "application/json",
+            dataType: "json"
+        }).done(function (res) {
+
+            alert("Nhân bản thành công");
+            self.loadData();
+            self.btnCloseOnClick();
+        }).fail(function (res) {
+
+        })
+    }
+    //#endregion
+
+
+    //#region checkform
     /**
      * kiem tra du lieu rong
      * author: HVM 30/09/2020
      * Edit: kie tra trong du lieu khi nhap vao dialog modal*/
+
     checkRequired() {
         var value = this.value;
         if (!value || value == 0 || value == "" || !(value && value.trim())) {
@@ -424,51 +481,11 @@
     /**load lai du lieu
      * author: HVM 29/09/2020
      * edit: load du lieu nut nap*/
-    btnReloadOnClick() {
-        this.loadData();
-
-    }
-    //getRecorddata() {
-    //    // lay thong tin ban ghi da chon trong danh sach
-    //    var recordSelected = $('#table tbody tr.row-selected');
-    //    console.log(recordSelected);
-    //    // lay du lieu thong tin cua danh sachs
-    //    var id = recordSelected.data('keyId');
-
-    //    return id;
-    //}
-    getRecordIdSelected() {
-        //Lấy id của bản ghi được chọn
-        var rowId = null;
-        var recordSelected = $('#table tbody .row-selected');
-        //Lấy dữ liệu chi tiết của bản ghi đó
-        if (recordSelected.length > 0) {
-            rowId = $(recordSelected).data("keyId");
-        }
-        return rowId;
-    }
-    //#endregion 'Nut sự kiện'
+   
+   
+    //#endregion
 }
 
 
-/**dữ liệu ảo
- * author: HVM 29/09/2020
- * edit: dữ liệu ảo  với 100 bản ghis*/
+
 var data = [];
-//for (var i = 0; i < 100; i++) {
-//    var employee = {
-//        EmployeeCode: "KH00" + i + 1,
-//        EmployeeName: "Linh Trang Nguyen",
-//        Gender: "Nữ",
-//        DateOfBirth: "29/08/1998",
-//        Mobile: "0123654789",
-//        PositionName: "Giám đốc",
-//        DepartmentsName: "Phòng đào tạo",
-//        Email: "Ninh Binh",
-//        Salary: "10000000",
-//        WorkStatus: "Đang làm việc",
-//    };
-//    data.push(employee);
-
-//}
-

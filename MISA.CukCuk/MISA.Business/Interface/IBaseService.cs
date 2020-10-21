@@ -16,7 +16,7 @@ namespace MISA.Business.Interface
 
         T GetById(Guid objectId);
         ServiceResponse Insert(T entity);
-        int Update(T entity);
+        int Update(T entity, Guid id);
         int Delete(Guid id);
     }
 }
