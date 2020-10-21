@@ -14,11 +14,13 @@ namespace MISA.Common.Models
         public string EmployeeCode { get; set; }
         public string EmployeeName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public int Gender { get; set; }
+        public int? Gender { get; set; }
         public string GenderName
         {
             get
             {
+                if (Gender == null)
+                    return "Không xác định";
                 switch (Gender)
                 {
                     case 0:

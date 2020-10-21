@@ -197,12 +197,14 @@
         }).done(function (response) {
             debugger;
             $("#modal tr td input[fieldname='employeeCode']").val(`NV${CommonJs.getItemCodeNumberIncrea(response)}`)
-        }).fail(response => {
+        }).fail(function (response) {
             console.log(response)
         })
         self.showDetailModal();
+       
         self.FormMode = "Add";
         $(self).focus;
+       
 
     }
 
@@ -210,6 +212,7 @@
     Author: HVM:
     Edit: Tat modal*/
     btnCancelOnClick() {
+        this.Refreshform();
         this.hideDetailModal();
 
     }
@@ -217,6 +220,7 @@
     Author: HVM:
     Edit: Tat modal*/
     btnCloseOnClick() {
+        this.Refreshform();
         this.hideDetailModal();
     }
     /**hiển  modal
@@ -287,7 +291,7 @@
 
                 var fieldName = $(input).attr('fieldName');
 
-                var value = $(input).val();
+                
 
                 if (fieldName == 'salary') {
                     var value = parseFloat($(input).val());
@@ -296,6 +300,8 @@
                     var value = parseFloat($(input).val());
                 } else if (fieldName == 'gender') {
                     var value = parseFloat($(input).val());
+                } else {
+                    var value = $(input).val();
                 }
                 object[fieldName] = value;
                 
@@ -316,11 +322,12 @@
                 }).done(function (res) {
                     if (response == 0) {
                         self.showWarning($("#modal tr td input[required]"), "Mã nhân viên đã tồn tại");
+                        $("#modal tr td input[required]").focus();
                     }
                     else {
                         alert("Thêm thành công");
                         self.loadData();
-                        self.Refreshform();
+                       
                         self.btnCloseOnClick();
                     }
                 })
@@ -344,8 +351,8 @@
                 }).done(function (res) {
 
                     alert("Sửa thành công");
-                    self.loadData(res);
-                    self.Refreshform();
+                    self.loadData();
+                   
                     self.btnCloseOnClick();
                    
                 }).fail(function (res) {
@@ -547,7 +554,7 @@
         $("#dialog-validate #bodydaialog .notice-text").html(content)
         this.focusInput = item;
         $("#dialog-validate").show();
-        setTimeout(() => $("#dialog-validate #btnOke").focus(), 0)
+        setTimeout(() => $("#dialog-validate #btnOke").focus(), 0);
         item.focus();
     }
     /*

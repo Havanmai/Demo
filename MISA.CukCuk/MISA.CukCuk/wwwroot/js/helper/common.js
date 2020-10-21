@@ -9,7 +9,8 @@
       *  Author: HVM 298/09/2020
       */
      fomartMoney(money) {
-         return money.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+         return money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+             //(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
      },
         /**

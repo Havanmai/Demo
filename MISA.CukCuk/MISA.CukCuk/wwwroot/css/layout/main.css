@@ -71,6 +71,91 @@
         background-position: center;
         background-repeat: no-repeat;
     }
+.notification {
+    display: flex;
+    height: 100%;
+}
+
+    .notification div {
+        height: 120%;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .notification i {
+        color: #fff;
+        font-size: 27px;
+    }
+
+.earth,
+.phone {
+    position: relative;
+    cursor: pointer;
+    
+}
+.phone {
+    overflow: hidden;
+}
+
+    .phone::after {
+        content: "New";
+        color: #fff;
+        position: absolute;
+        width: 160%;
+        height: 15px;
+        text-align: center;
+        background: red;
+        font-weight: bold;
+        /*font-family: "Tahoma_Regular";
+        font-weight: bold;
+        font-size: 9px;*/
+        line-height: 15px;
+        transform: rotateZ(50deg);
+        left: 0;
+        top: 10%;
+    }
+.earth::after {
+    content: "2";
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    background: red;
+    /* font-family: "Tahoma_Regular";
+    font-weight: bold;
+    font-size: 10px;*/
+    padding: 2px 5px;
+    right: -2px;
+    top: -3px;
+    font-weight: bold;
+}
+
+.earth i {
+    font-size: 25px;
+}
+
+.phone i {
+    font-size: 13px;
+    display: block;
+    padding: 5px;
+    border-radius: 999px;
+    border: 3px solid #fff;
+}
+.account-menu-icon-left {
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 27px;
+    width: 27px;
+    margin: auto;
+    margin-top: 5px;
+    margin-left: 10px;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../content/image/Images/EmployeeImage.png');
+}
+
     .Eath-icon {
         background-image: url('../../content/image/images/planet-earth.png');
         margin:10px;
@@ -81,7 +166,7 @@
     }
     .header-right .user {
         margin: 10px;
-    
+    color:#fff;
     }
 .drop-down-icon {
     background-image: url('../../content/image/Images/button/default-small-arrow.png');

@@ -86,6 +86,7 @@
 #modal .input-create1 {
     width: 98.4%;
     border-radius: unset !important;
+   padding-left:15px;
 }
 
 #modal .input-create {

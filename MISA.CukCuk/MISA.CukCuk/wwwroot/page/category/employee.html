@@ -3,12 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+
     <link href="../../css/layout/main.css" rel="stylesheet" />
     <link href="../../css/layout/sidebar.css" rel="stylesheet" />
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link href="../../css/page/category/employee.css" rel="stylesheet" />
     <link href="../../css/element/table.css" rel="stylesheet" />
-    
-   
+
+
+
 </head>
 <body>
     <div id="mainfull">
@@ -104,8 +107,17 @@
                         <option>Tiếng Việt(Tiếng Việt)</option>
                         <option>Tiếng Việt(Tiếng Việt)</option>
                     </select>
-                    <span class="icon Eath-icon"></span>
-                    <span class="icon phone-icon"></span>
+                    <!--<span class="icon Eath-icon"></span>
+    <span class="icon phone-icon"></span>
+    <div class="account-menu-icon-left"></div>-->
+                    <div class="notification">
+                        <div class="earth">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="phone">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                    </div>
                     <div class="account-menu-icon-left"></div>
                     <label class="header-right user">Ha Van Mai </label>
                     <span class="icon drop-down-icon"></span>
@@ -245,8 +257,8 @@
                     <td class="lbl"> Giới tính</td>
                     <td>
                         <select fieldName="gender">
-                            <option id="male" name="gender" value="1" style="height:26px;">Nam</option>
                             <option id="female" name="gender" value="0" style="height:26px;">Nữ</option>
+                            <option id="male" name="gender" value="1" style="height:26px;">Nam</option>
                             <option id="other" name="gender" value="2" style="height:26px;">Khác</option>
                         </select>
 
@@ -263,7 +275,7 @@
                 </tr>
                 <tr>
                     <td class="lbl">Số CMT/HC</td>
-                    <td><input type="text" class="input-create0 input-create" style="width:151px;" fieldName="indentityNumber" /></td>
+                    <td><input type="text" class="input-create0 input-create" style="width:165px;" fieldName="indentityNumber" /></td>
                     <td class="lbl">Ngày cấp</td>
                     <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;height:23px;" fieldName="indentityDate" /></td>
                 </tr>
@@ -280,7 +292,7 @@
                     <td class="lbl" style="margin-top:15px !important;">Vị trí</td>
                     <td colspan="4">
                         <select fieldName="positionId" class="inputSelected" id="positionName" name="positionName">
-                            <option value="s">Select</option>
+                            <!--<option value="s">Select</option>-->
                         </select>
                     </td>
 
@@ -289,22 +301,22 @@
                     <td class="lbl">Phòng ban</td>
                     <td colspan="4">
                         <select fieldName="departmentId" class="inputSelected" id="departmentName" name="departmentName">
-                            <option value="s">Select</option>
+                            <!--<option value="s">Select</option>-->
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td class="lbl">Mã số thuế cá nhân</td>
-                    <td><input type="text" class="input-create0 input-create" style="width:151px;" fieldName="taxCode" /></td>
+                    <td><input type="text" class="input-create0 input-create" style="width:165px;" fieldName="taxCode" /></td>
                     <td class="lbl">Mức lương</td>
                     <td colspan="2">
-                        <input type="text" class="input-create0 input-create1" style="text-align:right;position:relative;width:80.7%; padding-right:50px;" id="txtSalary" fieldName="salary">
+                        <input type="text" class="input-create0 " style="text-align:right;position:relative;width:81.8%; padding-right:50px;" id="txtSalary" fieldName="salary">
                         <span style=" font-style:italic; right:20px;position:absolute; padding-top:5px;"> &nbsp;(VNĐ)</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="lbl">Ngày gia nhập</td>
-                    <td><input type="date" class="input-create0 input-create2" id="txtDateBorn" style="width:154px;" fieldname="joinDate" /></td>
+                    <td><input type="date" class="input-create0 input-create1" id="txtDateBorn" style="width:154px;" fieldname="joinDate" /></td>
                     <td class="lbl">Tình trạng</td>
                     <td colspan="2">
                         <select fieldName="workStatus">
