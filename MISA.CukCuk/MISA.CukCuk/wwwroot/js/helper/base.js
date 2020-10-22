@@ -26,7 +26,7 @@
         //$('#txtSalary').on('blur, focus, keyup', this.formatMoneyKeyup);
     }
 
-
+    //#region laydulieu
     /**
     *   kế thừa
     * Author: HVM 29/09/2020
@@ -34,6 +34,10 @@
     getData() {
         this.Data = [];
     }
+    /**
+    *   lấy giá trị mã nhân viên lớn nhất
+    * Author: HVM 22/10/2020
+    * Edit : lấy data cho các lớp con  kế thừa*/
     getDataCode() {
         var sefl = this;
         $.ajax({
@@ -53,6 +57,7 @@
             })
 
     }
+    //#endregion laydulieu
 
     //#region Loaddulieu
     /**
@@ -72,14 +77,7 @@
             contentType: "application/json",// 
             dataType: "",
             async: false,
-            // co the dung de check lay đc api chưa
-
-            //success: function () {
-
-            //},
-            //fail: function () {
-
-            //} 
+            
 
         }).done(function (response) {
 

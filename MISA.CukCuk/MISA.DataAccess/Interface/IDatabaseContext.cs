@@ -13,7 +13,7 @@ namespace MISA.DataAccess.Interface
         int Update(T entity, object id);
         int DeleteId(object id);
         IEnumerable<T> Get(string storeName);
-        object Get(string storeName, string code);
+        
         string GetbyCode();
     }
 }

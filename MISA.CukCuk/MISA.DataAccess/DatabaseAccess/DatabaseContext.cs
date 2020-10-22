@@ -29,7 +29,7 @@ namespace MISA.DataAccess.DatabaseAccess
         #endregion
         #region method
         /// <summary>
-        /// lay du lieu customer
+        /// lay du lieu
         /// author: HVM(29/05/2020)
         /// </summary>
         /// <returns></returns>
@@ -59,14 +59,14 @@ namespace MISA.DataAccess.DatabaseAccess
             return entities;
         }
 
-        public object Get(string storeName, string code)
-        {
-            _sqlCommand.Parameters.Clear();
-            _sqlCommand.CommandText = storeName;
-            _sqlCommand.Parameters.AddWithValue("@EmployeeCode", code);
-            // Thực hiện đọc dữ liệu:
-            return _sqlCommand.ExecuteScalar();
-        }
+        //public object Get(string storeName, string code)
+        //{
+        //    _sqlCommand.Parameters.Clear();
+        //    _sqlCommand.CommandText = storeName;
+        //    _sqlCommand.Parameters.AddWithValue("@EmployeeCode", code);
+        //    // Thực hiện đọc dữ liệu:
+        //    return _sqlCommand.ExecuteScalar();
+        //}
 
 
 

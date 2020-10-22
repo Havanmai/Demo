@@ -303,10 +303,10 @@ footer-right button:focus {
     width:70px;
 }
 
-         #btnOke:focus,
-         #btnOke:hover {
-            border: 1px solid #178AD6;
-        }
+    #btnOke:focus,
+    #btnOke:hover {
+        border: 1px solid #E0DFDF;
+    }
 
 .buttonClick{
     display:flex;
@@ -325,7 +325,7 @@ footer-right button:focus {
 
     #btnOke1:focus,
     #btnOke1:hover {
-        border: 1px solid #178AD6;
+        border: 1px solid #E0DFDF;
     }
 #btnHuy {
     top: 0px;
@@ -342,5 +342,5 @@ footer-right button:focus {
 
     #btnHuy:focus,
     #btnHuy:hover {
-        border: 1px solid #178AD6;
+        border: 1px solid #E0DFDF;
     }
